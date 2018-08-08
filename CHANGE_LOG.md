@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0126: 0.1.4.5 (linuxgurugamer) for KSP 1.4.0
+	+ Fixed typo in the UseBlizzy method which was causing the blizzy toolbar to be always selected if it was called before the initial button creation
 * 2018-0125: 0.1.4.4 (linuxgurugamer) for KSP 1.4.0
 	+ Improved the UseBlizzy method to now allow setting it BEFORE creating the toolbar, this makes it possible to not have to use the UseBlizzy in an OnGUI if not desired
 	+ Added methods:  SetTrue() and SetFalse()
