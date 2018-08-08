@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0324: 0.1.5.6 (linuxgurugamer) for KSP 1.4.1
+	+ Added DDS to the possible image formats, only DXT1 and DXT5 are supported
 * 2018-0320: 0.1.5.5 (linuxgurugamer) for KSP 1.4.1
 	+ Added GIF to the possible image formats
 * 2018-0319: 0.1.5.4 (linuxgurugamer) for KSP 1.4.1
