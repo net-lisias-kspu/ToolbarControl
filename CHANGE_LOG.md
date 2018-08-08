@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0316: 0.1.5.1 (linuxgurugamer) for KSP 1.4.1
+	+ Filled nullref when first called
+	+ Fixed bug when a mod called SetTrue or SetFalse, the button would be set true/false, but the texture wasn't being changed
 * 2018-0314: 0.1.5 (linuxgurugamer) for KSP 1.4.1
 	+ Updated for 1.4.1
 * 2018-0222: 0.1.4.7 (linuxgurugamer) for KSP 1.4.0
