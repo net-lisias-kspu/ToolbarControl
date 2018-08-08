@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0123: 0.1.4.1 (linuxgurugamer) for KSP 1.4.0
+	+ Fixed harmless nullrefs which were happening after clicking toolbar button
+	+ Added checks to all callbacks for nulls
 * 2018-0122: 0.1.4 (linuxgurugamer) for KSP 1.4.0
 	+ Added left/right button callbacks
 	+ Updated documentation
