@@ -1,5 +1,15 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0504: 0.1.6.6 (linuxgurugamer) for KSP 1.4.1
+	+ Added IsHovering
+	+ Added StockPosition
+	+ Added BlizzyPosition ( placeholder for now)
+	+ Changed startup for registeration from MainMenu to instantly
+	+ Added sorted list by mod id
+	+ Reduced size of ToolbarController window
+	+ Added two new methods:
+		- bool IsStockButtonManaged(ApplicationLauncherButton button, out string nameSpace, out string id, out string toolTip)
+		- bool IsBlizzyButtonManaged(IButton blizzyButton, out string nameSpace, out string id, out string toolTip)
 * 2018-0425: 0.1.6.5 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed issue when both buttons are shown, if the mod was updating the textures, the stock texture wasn't being updated while the Blizzy texture was
 * 2018-0419: 0.1.6.4 (linuxgurugamer) for KSP 1.4.1
