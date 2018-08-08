@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0415: 0.1.6.2 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed nullref when setting textures and no stock button set
 * 2018-0414: 0.1.6.1 (linuxgurugamer) for KSP 1.4.1
 	+ Added KSPAssembly to AssemblyInfo.cs, will help with load order of DLLs
 * 2018-0413: 0.1.6 (linuxgurugamer) for KSP 1.4.1
