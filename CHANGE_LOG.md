@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0513: 0.1.6.7 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed repaint issues causing NullRefs
+	+ Now only shows mods which have regeristed in the current game, it still remembers all of them
 * 2018-0504: 0.1.6.6 (linuxgurugamer) for KSP 1.4.1
 	+ Added IsHovering
 	+ Added StockPosition
