@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0124: 0.1.4.3 (linuxgurugamer) for KSP 1.4.0
+	+ Added method/function to allow mods to check to see if a toolbarbutton is controlled by this mod
+	+ Renamed License.md and README.md
 * 2018-0123: 0.1.4.1 (linuxgurugamer) for KSP 1.4.0
 	+ Fixed harmless nullrefs which were happening after clicking toolbar button
 	+ Added checks to all callbacks for nulls
