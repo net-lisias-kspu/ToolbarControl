@@ -30,11 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AssemblyVersion.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssemblyVersion.tt</DependentUpon>
-    </Compile>
     <Compile Include="BlizzyOptions.cs" />
     <Compile Include="ConfigInfo.cs" />
     <Compile Include="IntroWindow.cs" />
@@ -45,12 +40,11 @@
     <Compile Include="Settings.cs" />
     <Compile Include="ToolbarControl.cs" />
     <Compile Include="ToolbarWrapper.cs" />
+    <Compile Include="Version.cs">
+      <DependentUpon>Version.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssemblyVersion.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AssemblyVersion.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\sheet-38.png" />
     <None Include="Resources\sheet.png" />
     <None Include="Resources\flask-38.png" />
@@ -64,6 +58,10 @@
     <None Include="Resources\btnDelete.png" />
     <None Include="Resources\btnClose.png" />
     <None Include="Resources\btnBackground.png" />
+    <None Include="Version.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Version.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

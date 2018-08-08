@@ -1,35 +1,33 @@
 {
-    "NAME"     : "ToolbarControl",
-    "URL"      : "https://raw.githubusercontent.com/linuxgurugamer/ToolbarControl/master/ToolbarControl.version",
-    "DOWNLOAD" : "https://github.com/linuxgurugamer/ToolbarControl/releases",
-    "GITHUB" :
-    {
-        "USERNAME" : "linuxgurugamer",
-        "REPOSITORY" : "ToolbarControl"
-    },
-    "VERSION" :
-    {
-        "MAJOR" : 0,
-        "MINOR" : 1,
-        "PATCH" : 6,
-        "BUILD" : 13
-    },
-	"KSP_VERSION": 
-	{
-		"MAJOR": 1,
-		"MINOR": 4,
-		"PATCH": 1
-	},
-	"KSP_VERSION_MIN":
-	{
+	"NAME":		"ToolbarControl Unofficial",
+	"URL":		"https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/ToolbarControl.version",
+	"DOWNLOAD":	"https://github.com/net-lisias-kspu/ToolbarControl/releases",
+	"CHANGE_LOG":	 "https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/CHANGE_LOG.md",
+	"CHANGE_LOG_URL":"https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/CHANGES.md",
+	"GITHUB":{
+		"USERNAME": "net-lisias-kspu",
+		"REPOSITORY": "Toolbar Control"
+		"ALLOW_PRE_RELEASE": false
+		},
+	"VERSION":{
+		"MAJOR":0,
+		"MINOR":1,
+		"PATCH":6,
+		"BUILD":13
+		},
+	"KSP_VERSION":{
 		"MAJOR":1,
 		"MINOR":4,
 		"PATCH":1
-	},
-	"KSP_VERSION_MAX":
-	{
+		},
+	"KSP_VERSION_MIN":{
+		"MAJOR":1,
+		"MINOR":4,
+		"PATCH":1
+		},
+	"KSP_VERSION_MAX":{
 		"MAJOR":1,
 		"MINOR":4,
 		"PATCH":99
-	}
+		}
 }
