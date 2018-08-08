@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0805: 0.1.6.11 (linuxgurugamer) for KSP 1.4.1
+	+ Added a debugMode setting
+	+ Changed most Log.info to Log.Debug to reduce log spam
 * 2018-0621: 0.1.6.10 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed Nullref when Blizzy toolbar not installed and buttons were selected to be on the Blizzy button
 * 2018-0608: 0.1.6.9 (linuxgurugamer) for KSP 1.4.1
