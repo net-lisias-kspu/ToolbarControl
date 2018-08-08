@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0122: 0.1.4 (linuxgurugamer) for KSP 1.4.0
+	+ Added left/right button callbacks
+	+ Updated documentation
 * 2018-0121: 0.1.3.5 (linuxgurugamer) for KSP 1.4.0
 	+ More fixes for multiple buttons
 * 2018-0118: 0.1.3.4 (linuxgurugamer) for KSP 1.4.0
