@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0621: 0.1.6.10 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed Nullref when Blizzy toolbar not installed and buttons were selected to be on the Blizzy button
 * 2018-0608: 0.1.6.9 (linuxgurugamer) for KSP 1.4.1
 	+ Added code to load button textures from game database instead of the disk for the stock toolbar
 * 2018-0513: 0.1.6.7 (linuxgurugamer) for KSP 1.4.1
