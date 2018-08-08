@@ -1,5 +1,17 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0413: 0.1.6 (linuxgurugamer) for KSP 1.4.1
+	+ Added code for mods to register with the toolbar Controller
+	+ Added functions for mods to set and get the setting for the Blizzy toolbar
+	+ Added window to allow users to change setting without having to go into the mod
+	+ Added following methods, see the README for details:
+			- toolbarControl.UseButtons(string NameSpace);
+		- public static bool RegisterMod(string NameSpace, string DisplayName = "", bool useBlizzy = false, bool useStock = true, bool NoneAllowed = true)
+		- public static bool BlizzyActive(string NameSpace, bool? useBlizzy = null)
+		- public static bool StockActive(string NameSpace, bool? useStock = null)
+		- public static void ButtonsActive(string NameSpace, bool? useStock, bool? useBlizzy)
+		- public void UseStock(bool useStock)
+	+ Cleaned up old commented-out code
 * 2018-0403: 0.1.5.9 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed issue when doing a SetTrue or SetFalse before the button has actually been created
 * 2018-0403: 0.1.5.8 (linuxgurugamer) for KSP 1.4.1
