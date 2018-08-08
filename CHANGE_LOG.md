@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0118: 0.1.3.4 (linuxgurugamer) for KSP 1.4.0
+	+ Fixed problem where stock toolbar button wasn't being deleted
 * 2018-0118: 0.1.3.3 (linuxgurugamer) for KSP 1.4.0
 	+ Fixed download link in .version file
 * 2018-0118: 0.1.3.2 (linuxgurugamer) for KSP 1.4.0
