@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0121: 0.1.3.5 (linuxgurugamer) for KSP 1.4.0
+	+ More fixes for multiple buttons
 * 2018-0118: 0.1.3.4 (linuxgurugamer) for KSP 1.4.0
 	+ Fixed problem where stock toolbar button wasn't being deleted
 * 2018-0118: 0.1.3.3 (linuxgurugamer) for KSP 1.4.0
