@@ -1,5 +1,10 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0419: 0.1.6.4 (linuxgurugamer) for KSP 1.4.1
+	+ Added two methods, currently only working on the stock button:
+		- public void DisableMutuallyExclusive()
+		- public void EnableMutuallyExclusive()
+	+ Fixed hovering over button in Blizzy toolbar not working
 * 2018-0415: 0.1.6.3 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed nullrefs when blizzy toolbar not installed
 	+ Added code to always show buttons on stock if lbizzy not installed
