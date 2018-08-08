@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0319: 0.1.5.4 (linuxgurugamer) for KSP 1.4.1
+	+ Fix for fuzzy buttons
 * 2018-0318: 0.1.5.3 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed nullref when onTrue was called before button was created
 * 2018-0316: 0.1.5.2 (linuxgurugamer) for KSP 1.4.1
