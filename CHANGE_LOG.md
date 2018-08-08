@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0425: 0.1.6.5 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed issue when both buttons are shown, if the mod was updating the textures, the stock texture wasn't being updated while the Blizzy texture was
 * 2018-0419: 0.1.6.4 (linuxgurugamer) for KSP 1.4.1
 	+ Added two methods, currently only working on the stock button:
 		- public void DisableMutuallyExclusive()
