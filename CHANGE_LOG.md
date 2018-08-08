@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0403: 0.1.5.8 (linuxgurugamer) for KSP 1.4.1
+	+ Updated version file for 1.4.1-1.4.99
 * 2018-0326: 0.1.5.7 (linuxgurugamer) for KSP 1.4.1
 	+ fixed the LoadImageFromFile, the "public" was deleted somehow
 * 2018-0324: 0.1.5.6 (linuxgurugamer) for KSP 1.4.1
