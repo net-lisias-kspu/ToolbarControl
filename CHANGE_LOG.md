@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0222: 0.1.4.7 (linuxgurugamer) for KSP 1.4.0
+	+ Fixed bug with not being able to have a button on the Blizzy toolbar only in the flight scene and not in the map view
+	+ Added void SetTexture(string large, string small) to allow mod to change the button textures directly
 * 2018-0128: 0.1.4.6 (linuxgurugamer) for KSP 1.4.0
 	+ Added code to not try to use tooltips if not in a scene which supports it
 * 2018-0126: 0.1.4.5 (linuxgurugamer) for KSP 1.4.0
