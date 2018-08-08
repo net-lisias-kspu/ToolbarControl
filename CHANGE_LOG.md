@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0326: 0.1.5.7 (linuxgurugamer) for KSP 1.4.1
+	+ fixed the LoadImageFromFile, the "public" was deleted somehow
 * 2018-0324: 0.1.5.6 (linuxgurugamer) for KSP 1.4.1
 	+ Added DDS to the possible image formats, only DXT1 and DXT5 are supported
 * 2018-0320: 0.1.5.5 (linuxgurugamer) for KSP 1.4.1
