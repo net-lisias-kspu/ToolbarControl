@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0316: 0.1.5.2 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed AddLeftRightClickCallbacks call
 * 2018-0316: 0.1.5.1 (linuxgurugamer) for KSP 1.4.1
 	+ Filled nullref when first called
 	+ Fixed bug when a mod called SetTrue or SetFalse, the button would be set true/false, but the texture wasn't being changed
