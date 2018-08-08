@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0415: 0.1.6.3 (linuxgurugamer) for KSP 1.4.1
+	+ Fixed nullrefs when blizzy toolbar not installed
+	+ Added code to always show buttons on stock if lbizzy not installed
 * 2018-0415: 0.1.6.2 (linuxgurugamer) for KSP 1.4.1
 	+ Fixed nullref when setting textures and no stock button set
 * 2018-0414: 0.1.6.1 (linuxgurugamer) for KSP 1.4.1
