@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0125: 0.1.4.4 (linuxgurugamer) for KSP 1.4.0
+	+ Improved the UseBlizzy method to now allow setting it BEFORE creating the toolbar, this makes it possible to not have to use the UseBlizzy in an OnGUI if not desired
+	+ Added methods:  SetTrue() and SetFalse()
 * 2018-0124: 0.1.4.3 (linuxgurugamer) for KSP 1.4.0
 	+ Added method/function to allow mods to check to see if a toolbarbutton is controlled by this mod
 	+ Renamed License.md and README.md
