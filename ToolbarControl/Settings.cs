@@ -11,7 +11,13 @@ using UnityEngine;
 
 namespace ToolbarControl_NS
 {
-    public class TC : GameParameters.CustomParameterNode
+    public static class Settings
+	{
+		public static readonly string PLUGINDATA = Path.Combine(KSPUtil.ApplicationRootPath, "PluginData/ToolbarControl");
+		public const string SETTINGSNAME = "ToolbarController";
+	}
+
+	public class TC : GameParameters.CustomParameterNode
     {
         public override string Title { get { return ""; } }
         public override GameParameters.GameMode GameMode { get { return GameParameters.GameMode.ANY; } }

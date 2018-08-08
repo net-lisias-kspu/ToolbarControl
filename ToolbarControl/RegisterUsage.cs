@@ -37,7 +37,7 @@ namespace ToolbarControl_NS
 
         //internal static List<Mod> registeredMods = new List<Mod>();
 
-        static string ConfigFile = KSPUtil.ApplicationRootPath + "GameData/001_ToolbarControl/PluginData/ToolbarControl.cfg";
+		public static readonly string ConfigFile = Path.Combine(Settings.PLUGINDATA, "ToolbarControl.cfg");
         const string TOOLBARCONTROL = "ToolbarControl";
         const string TOOLBARCONTROLDATA = "ToolbarControlData";
         const string DATA = "DATA";
@@ -60,7 +60,9 @@ namespace ToolbarControl_NS
                 data.AddNode(DATA, nodeData);
             }
             node.AddNode(data);
-            node.Save(ConfigFile);
+
+			if (!Directory.Exists(Settings.PLUGINDATA)) Directory.CreateDirectory(Settings.PLUGINDATA);
+			node.Save(ConfigFile);
         }
 
         static bool ToBool(string aText)

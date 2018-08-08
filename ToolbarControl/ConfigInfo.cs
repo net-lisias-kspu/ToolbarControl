@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,7 @@ namespace ToolbarControl_NS
     public class ConfigInfo : MonoBehaviour
     {
         public static ConfigInfo Instance;
-        const string SETTINGSNAME = "ToolbarController";
-        static string PLUGINDATA = KSPUtil.ApplicationRootPath + "GameData/001_ToolbarControl/PluginData/Debug.cfg";
+		static readonly string DEBUGCFG = Path.Combine(Settings.PLUGINDATA,"Debug.cfg");
 
         static public bool debugMode = false;
 
@@ -31,19 +31,21 @@ namespace ToolbarControl_NS
             ConfigNode settingsFile = new ConfigNode();
             ConfigNode settings = new ConfigNode();
 
-            settingsFile.SetNode(SETTINGSNAME, settings, true);
+            settingsFile.SetNode(Settings.SETTINGSNAME, settings, true);
             settings.AddValue("debugMode", HighLogic.CurrentGame.Parameters.CustomParams<TC>().debugMode);
-            settingsFile.Save(PLUGINDATA);
+
+			if (!Directory.Exists(Settings.PLUGINDATA)) Directory.CreateDirectory(Settings.PLUGINDATA);
+			settingsFile.Save(DEBUGCFG);
         }
 
         public void LoadData()
         {
             Log.Info("ToolbarControl.LoadData");
-            ConfigNode settingsFile = ConfigNode.Load(PLUGINDATA);
+            ConfigNode settingsFile = ConfigNode.Load(DEBUGCFG);
             ConfigNode node = null;
             if (settingsFile != null)
             {
-                node = settingsFile.GetNode(SETTINGSNAME);
+                node = settingsFile.GetNode(Settings.SETTINGSNAME);
                 if (node != null)
                 {
                     if (node.HasValue("debugMode"))
