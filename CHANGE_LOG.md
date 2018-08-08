@@ -1,5 +1,7 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0807: 0.1.6.13 (linuxgurugamer) for KSP 1.4.1
+	+ Reimplemented the Log.Debug, using a local file to store the debug value
 * 2018-0805: 0.1.6.12 (linuxgurugamer) for KSP 1.4.1
 	+ Commented out all Log.Debug lines because they were using the settings class which isn't instantiated in the beginning.  Was causing nullrefs
 * 2018-0805: 0.1.6.11 (linuxgurugamer) for KSP 1.4.1
