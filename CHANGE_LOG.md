@@ -1,5 +1,8 @@
 # Toolbar Controller :: Change Log
 
+* 2018-0114: 0.1.2 (linuxgurugamer) for KSP 1.4.0
+	+ Fixed issue with stock toolbar not changing textures
+	+ Replaced Debug.Log with logging class to reduce log spam
 * 2018-0114: 0.1.1 (linuxgurugamer) for KSP 1.4.0
 	+ Moved mod into the 000_Toolbar directory
 	+ Added method to return location of mouse at last buttonclick
