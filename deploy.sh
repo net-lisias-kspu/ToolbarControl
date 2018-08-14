@@ -9,6 +9,14 @@ check() {
 	fi
 }
 
+deploy_dev() {
+	local DLL=$1
+
+	if [ -f "./bin/Release/$DLL.dll" ] ; then
+		cp "./bin/Release/$DLL.dll" "$LIB"
+	fi
+}
+
 deploy() {
 	local DLL=$1
 
@@ -32,5 +40,5 @@ cp $VERSIONFILE "./GameData/$TARGETDIR"
 cp CHANGE_LOG.md "./GameData/$TARGETDIR"
 cp README.md  "./GameData/$TARGETDIR"
 cp LICENSE "./GameData/$TARGETDIR"
+deploy_dev $PACKAGE
 deploy $PACKAGE
-
