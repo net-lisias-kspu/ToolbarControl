@@ -40,7 +40,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="ToolbarControl.cs" />
     <Compile Include="ToolbarWrapper.cs" />
-    <Compile Include="Version.cs">
+    <Compile Include="Properties\Version.cs">
       <DependentUpon>Version.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -58,7 +58,7 @@
     <None Include="Resources\btnDelete.png" />
     <None Include="Resources\btnClose.png" />
     <None Include="Resources\btnBackground.png" />
-    <None Include="Version.tt">
+    <None Include="Properties\Version.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Version.cs</LastGenOutput>
     </None>
