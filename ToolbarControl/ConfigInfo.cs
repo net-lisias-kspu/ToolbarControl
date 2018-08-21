@@ -19,7 +19,6 @@ namespace ToolbarControl_NS
 
         void Start()
         {
-            Log.Info("ConfigInfo.Start");
             Instance = this;
             LoadData();
             DontDestroyOnLoad(this);
@@ -27,7 +26,6 @@ namespace ToolbarControl_NS
 
         public void SaveData()
         {
-            Log.Info("ToolbarControl.SaveData");
             ConfigNode settingsFile = new ConfigNode();
             ConfigNode settings = new ConfigNode();
 
@@ -40,8 +38,7 @@ namespace ToolbarControl_NS
 
         public void LoadData()
         {
-            Log.Info("ToolbarControl.LoadData");
-            ConfigNode settingsFile = ConfigNode.Load(DEBUGCFG);
+            ConfigNode settingsFile = ConfigNode.Load(Settings.PLUGINDATA);
             ConfigNode node = null;
             if (settingsFile != null)
             {
