@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using KSP.UI.Screens;
-using KSP.IO;
 
 namespace ToolbarControl_NS
 {
