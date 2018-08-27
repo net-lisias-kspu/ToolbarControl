@@ -199,7 +199,7 @@ namespace ToolbarControl_NS
                     if (ToolbarControl.registeredMods[mod.modId].modToolbarControl != null)
                         ToolbarControl.registeredMods[mod.modId].modToolbarControl.UseButtons(mod.modId);
                     else
-                        Log.Debug(ConfigInfo.debugMode, "mod.Key: " + mod.modId + " modToolbarControl is null");
+                        Log.Debug("mod.Key: " + mod.modId + " modToolbarControl is null");
                 }
                 GUI.enabled = true;
                 GUILayout.Label(" " + mod.displayName);

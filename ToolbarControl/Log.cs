@@ -96,9 +96,9 @@ namespace ToolbarControl_NS
             }
         }
 
-        public static void Debug(bool debugMode, String msg)
+        public static void Debug(String msg)
         {
-            if (debugMode)
+			if (ConfigInfo.debugMode)
             {
                 UnityEngine.Debug.LogError(PREFIX + msg);
             }
