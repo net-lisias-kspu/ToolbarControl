@@ -18,7 +18,7 @@ namespace ToolbarControl_NS
 
         public static LEVEL level = LEVEL.INFO;
 
-        private static readonly String PREFIX = "ToolbarControl" + ": ";
+        private static readonly String PREFIX = "[ToolbarControl] ";
 
         public static LEVEL GetLevel()
         {
@@ -30,15 +30,14 @@ namespace ToolbarControl_NS
             UnityEngine.Debug.Log("log level " + level);
             Log.level = level;
         }
-
         public static LEVEL GetLogLevel()
         {
             return level;
         }
 
-        private static bool IsLevel(LEVEL level)
+        private static bool IsLevel(LEVEL plevel)
         {
-            return level == Log.level;
+            return plevel == Log.level;
         }
 
         public static bool IsLogable(LEVEL level)
@@ -62,7 +61,6 @@ namespace ToolbarControl_NS
             }
         }
 
-        [ConditionalAttribute("DEBUG")]
         public static void Info(String msg)
         {
             if (IsLogable(LEVEL.INFO))
@@ -76,7 +74,7 @@ namespace ToolbarControl_NS
         {
             //if (IsLogable(LEVEL.INFO))
             {
-                UnityEngine.Debug.LogWarning(PREFIX + "TEST:" + msg);
+                UnityEngine.Debug.LogWarning(PREFIX + "TEST: " + msg);
             }
         }
 
@@ -104,6 +102,11 @@ namespace ToolbarControl_NS
             }
             else
                 Log.Info(msg);
+        }
+
+        public static void Force(String msg)
+        {
+	        UnityEngine.Debug.Log(PREFIX + msg);
         }
 
         public static void Exception(Exception e)
