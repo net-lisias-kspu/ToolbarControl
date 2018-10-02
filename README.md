@@ -233,7 +233,7 @@ namespace KerbalSlingshotter
 
 ### License:
 
-Released under GPLv3.
+Released under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.txt). See [here](./LICENSE)
 
 
 ## UPSTREAM
