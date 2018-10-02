@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 //[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion(ToolbarControl_NS.PluginVersion.Number)]
-[assembly: AssemblyVersion(ToolbarControl_NS.PluginVersion.Number)]
+[assembly: AssemblyFileVersion(ToolbarControl_NS.Version.Number)]
+[assembly: AssemblyVersion(ToolbarControl_NS.Version.Number)]
 
-[assembly: KSPAssembly("ToolbarController", 1, 0)]
+[assembly: KSPAssembly("ToolbarController", ToolbarControl_NS.Version.build, ToolbarControl_NS.Version.minor)]
