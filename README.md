@@ -227,6 +227,12 @@ namespace KerbalSlingshotter
 }
 ```
 
+## Installation
+
+To install, place the GameData folder inside your Kerbal Space Program folder.
+
+**REMOVE ANY OLD VERSIONS OF THE PRODUCT BEFORE INSTALLING**.
+
 ### Dependencies
 
 * [Click Through Blocker](https://forum.kerbalspaceprogram.com/index.php?/topic/170747-141-click-through-blocker/)
