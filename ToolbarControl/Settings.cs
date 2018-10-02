@@ -13,7 +13,6 @@ namespace ToolbarControl_NS
 {
     public static class Settings
 	{
-		public static readonly string PLUGINDATA = Path.Combine(KSPUtil.ApplicationRootPath, "PluginData/ToolbarControl");
 		public const string SETTINGSNAME = "ToolbarController";
 	}
 

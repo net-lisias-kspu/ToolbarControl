@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using KSP.UI.Screens;
+using KSPe;
 
 namespace ToolbarControl_NS
 {
@@ -12,7 +13,7 @@ namespace ToolbarControl_NS
     public class ConfigInfo : MonoBehaviour
     {
         public static ConfigInfo Instance;
-		static readonly string DEBUGCFG = Path.Combine(Settings.PLUGINDATA,"Debug.cfg");
+		static readonly PluginConfig DEBUGCFG = PluginConfig.ForType<ToolbarControl>("Debug");
 
         static public bool debugMode = false;
 
@@ -31,26 +32,22 @@ namespace ToolbarControl_NS
             settingsFile.SetNode(Settings.SETTINGSNAME, settings, true);
             settings.AddValue("debugMode", HighLogic.CurrentGame.Parameters.CustomParams<TC>().debugMode);
 
-			if (!Directory.Exists(Settings.PLUGINDATA)) Directory.CreateDirectory(Settings.PLUGINDATA);
-			settingsFile.Save(DEBUGCFG);
+			DEBUGCFG.Save(settingsFile);
         }
 
         public void LoadData()
         {
-            ConfigNode settingsFile = ConfigNode.Load(Settings.PLUGINDATA);
-            ConfigNode node = null;
-            if (settingsFile != null)
-            {
-                node = settingsFile.GetNode(Settings.SETTINGSNAME);
-                if (node != null)
-                {
-                    if (node.HasValue("debugMode"))
-                    {
-                        debugMode = bool.Parse(node.GetValue("debugMode"));
-                    }
-                }
-            }
-            
+			if (!DEBUGCFG.IsLoadable) return;
+			
+            ConfigNode node = DEBUGCFG.Load().Node;
+            if (node.HasValue("debugMode"))
+                debugMode = bool.Parse(node.GetValue("debugMode"));
+            if (debugMode)  Log.Force("Debug is activated");
+
+            if (node.HasValue("logLevel"))
+                Log.SetLevel((Log.LEVEL)int.Parse(node.GetValue("logLevel")));
+            if (Log.LEVEL.OFF != Log.GetLevel())
+                Log.Force(string.Format("Log is active to level {0}", Log.GetLevel()));
         }
     }
 }

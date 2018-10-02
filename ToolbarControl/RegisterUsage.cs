@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using KSP.UI.Screens;
+using KSPe;
 
 namespace ToolbarControl_NS
 {
@@ -37,18 +38,18 @@ namespace ToolbarControl_NS
 
         //internal static List<Mod> registeredMods = new List<Mod>();
 
-		public static readonly string ConfigFile = Path.Combine(Settings.PLUGINDATA, "ToolbarControl.cfg");
         const string TOOLBARCONTROL = "ToolbarControl";
         const string TOOLBARCONTROLDATA = "ToolbarControlData";
         const string DATA = "DATA";
 
         static bool initted = false;
 
+		private static PluginConfig CONFIG = PluginConfig.ForType<ToolbarControl>(TOOLBARCONTROLDATA, TOOLBARCONTROL+".cfg");
         internal static void SaveData()
         {
-            ConfigNode node = new ConfigNode(TOOLBARCONTROL);
-            ConfigNode data = new ConfigNode(TOOLBARCONTROLDATA);
-            data.AddValue("showWindowAtStartup", IntroWindowClass.showIntroAtStartup);
+			CONFIG.Clear();
+
+            CONFIG.Node.AddValue("showWindowAtStartup", IntroWindowClass.showIntroAtStartup);
             foreach (var s in registeredMods)
             {
                 ConfigNode nodeData = new ConfigNode();
@@ -57,12 +58,10 @@ namespace ToolbarControl_NS
                 nodeData.AddValue("useBlizzy", s.Value.useBlizzy);
                 nodeData.AddValue("useStock", s.Value.useStock);
                 nodeData.AddValue("noneAllowed", s.Value.noneAllowed);
-                data.AddNode(DATA, nodeData);
+                
+                CONFIG.Node.AddNode(DATA, nodeData);
             }
-            node.AddNode(data);
-
-			if (!Directory.Exists(Settings.PLUGINDATA)) Directory.CreateDirectory(Settings.PLUGINDATA);
-			node.Save(ConfigFile);
+			CONFIG.Save();
         }
 
         static bool ToBool(string aText)
@@ -76,10 +75,9 @@ namespace ToolbarControl_NS
         {
             if (initted)
                 return;
-            if (File.Exists(ConfigFile))
+            if (CONFIG.IsLoadable)
             {
-                ConfigNode tempNode = ConfigNode.Load(ConfigFile);
-                ConfigNode data = tempNode.GetNode(TOOLBARCONTROLDATA);
+                ConfigNode data = CONFIG.Load().Node;
                 initted = true;
 
                 registeredMods.Clear();
