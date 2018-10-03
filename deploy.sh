@@ -12,8 +12,8 @@ check() {
 deploy_dev() {
 	local DLL=$1.dll
 
-	if [ -f "./bin/Release/$DLL.dll" ] ; then
-		cp "./bin/Release/$DLL.dll" "$LIB"
+	if [ -f "./bin/Release/$DLL" ] ; then
+		cp "./bin/Release/$DLL" "$LIB"
 	fi
 }
 
