@@ -10,7 +10,7 @@ namespace ToolbarControl_NS
     public class RegisterToolbarBlizzyOptions : MonoBehaviour
     {
 
-        void Start()
+        public void Awake()
         {
             ToolbarControl.RegisterMod(BlizzyOptions.MODID, BlizzyOptions.MODNAME, false, true, false);
         }
