@@ -121,7 +121,7 @@ namespace ToolbarControl_NS
         {
             if (BlizzyOptions.startupCompleted)
             {
-                Log.Error("WARNING: RegisterMod, LoadedScene: " + HighLogic.LoadedScene + ", called too late for: " + NameSpace + ", " + DisplayName + ", button may not be registered properly");
+                Log.Warning("RegisterMod, LoadedScene: " + HighLogic.LoadedScene + ", called too late for: " + NameSpace + ", " + DisplayName + ", button may not be registered properly");
             }
             LoadData();
             Mod mod = null;

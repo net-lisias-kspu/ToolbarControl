@@ -46,8 +46,6 @@ namespace ToolbarControl_NS
 
             if (node.HasValue("logLevel"))
                 Log.SetLevel((Log.LEVEL)int.Parse(node.GetValue("logLevel")));
-            if (Log.LEVEL.OFF != Log.GetLevel())
-                Log.Force(string.Format("Log is active to level {0}", Log.GetLevel()));
         }
     }
 }

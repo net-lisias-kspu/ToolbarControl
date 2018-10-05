@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Diagnostics;
+
+using L = KSPe.Util.Log;
 
 namespace ToolbarControl_NS
 {
@@ -8,110 +9,71 @@ namespace ToolbarControl_NS
     {
         public enum LEVEL
         {
-            OFF = 0,
-            ERROR = 1,
-            WARNING = 2,
-            INFO = 3,
-            DETAIL = 4,
-            TRACE = 5
+            OFF = L.Level.OFF,
+            ERROR = L.Level.ERROR,
+            WARNING = L.Level.WARNING,
+            INFO = L.Level.INFO,
+            DETAIL = L.Level.DETAIL,
+            TRACE = L.Level.TRACE
         };
+        
+		private static readonly L.Logger logger = L.Logger.CreateForType<ToolbarControl>("ToolbarControl");
 
-        public static LEVEL level = LEVEL.INFO;
+		public static void SetLevel(LEVEL level)
+		{
+			logger.level = (L.Level)level;
+            Log.Force(string.Format("Log is active to level {0}", level));
+		}
 
-        private static readonly String PREFIX = "[ToolbarControl] ";
-
-        public static LEVEL GetLevel()
-        {
-            return level;
-        }
-
-        public static void SetLevel(LEVEL level)
-        {
-            UnityEngine.Debug.Log("log level " + level);
-            Log.level = level;
-        }
-        public static LEVEL GetLogLevel()
-        {
-            return level;
-        }
-
-        private static bool IsLevel(LEVEL plevel)
-        {
-            return plevel == Log.level;
-        }
-
-        public static bool IsLogable(LEVEL level)
-        {
-            return level <= Log.level;
-        }
+		public static LEVEL GetLevel()
+		{
+			return (LEVEL)logger.level;
+		}
 
         public static void Trace(String msg)
         {
-            if (IsLogable(LEVEL.TRACE))
-            {
-                UnityEngine.Debug.Log(PREFIX + msg);
-            }
+			logger.trace(msg);
         }
 
         public static void Detail(String msg)
         {
-            if (IsLogable(LEVEL.DETAIL))
-            {
-                UnityEngine.Debug.Log(PREFIX + msg);
-            }
+			logger.detail(msg);
         }
 
         public static void Info(String msg)
         {
-            if (IsLogable(LEVEL.INFO))
-            {
-                UnityEngine.Debug.Log(PREFIX + msg);
-            }
+			logger.info(msg);
         }
 
-        [ConditionalAttribute("DEBUG")]
         public static void Test(String msg)
         {
-            //if (IsLogable(LEVEL.INFO))
-            {
-                UnityEngine.Debug.LogWarning(PREFIX + "TEST: " + msg);
-            }
+			if (ConfigInfo.debugMode)
+				logger.force("TEST: " + msg);
         }
 
         public static void Warning(String msg)
         {
-            if (IsLogable(LEVEL.WARNING))
-            {
-                UnityEngine.Debug.LogWarning(PREFIX + msg);
-            }
+			logger.warn(msg);
         }
 
         public static void Error(String msg)
         {
-            if (IsLogable(LEVEL.ERROR))
-            {
-                UnityEngine.Debug.LogError(PREFIX + msg);
-            }
+			logger.error(msg);
         }
 
         public static void Debug(String msg)
         {
-			if (ConfigInfo.debugMode)
-            {
-                UnityEngine.Debug.LogError(PREFIX + msg);
-            }
-            else
-                Log.Info(msg);
+	        logger.trace(msg);
         }
 
-        public static void Force(String msg)
+		public static void Force(String msg)
         {
-	        UnityEngine.Debug.Log(PREFIX + msg);
+	        logger.force(msg);
         }
 
         public static void Exception(Exception e)
         {
-            Log.Error("exception caught: " + e.GetType() + ": " + e.Message);
+			logger.error(e, "");
         }
 
     }
