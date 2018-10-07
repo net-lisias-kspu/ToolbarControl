@@ -22,7 +22,6 @@ namespace ToolbarControl_NS
 		public static void SetLevel(LEVEL level)
 		{
 			logger.level = (L.Level)level;
-            Log.Force(string.Format("Log is active to level {0}", level));
 		}
 
 		public static LEVEL GetLevel()
