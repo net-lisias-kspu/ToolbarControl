@@ -1,8 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using KSP.UI.Screens;
-using ClickThroughFix;
-using System.Linq;
 
 namespace ToolbarControl_NS
 {

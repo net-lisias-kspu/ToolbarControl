@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using KSP.UI.Screens;
-using ClickThroughFix;
 using System.Linq;
 
 namespace ToolbarControl_NS
@@ -98,7 +97,7 @@ namespace ToolbarControl_NS
                 windowStyle.focused.background =
                 windowStyle.normal.background = tex;
             }
-            WindowRect = ClickThruBlocker.GUILayoutWindow(4946386, WindowRect, DoWindow, "Toolbar Controller", windowStyle);
+            WindowRect = GUILayout.Window(4946386, WindowRect, DoWindow, "Toolbar Controller", windowStyle);
         }
 
         void OnDestroy()

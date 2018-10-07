@@ -3,7 +3,6 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
-using ClickThroughFix;
 
 namespace ToolbarControl_NS
 {
@@ -66,7 +65,7 @@ namespace ToolbarControl_NS
 
             if (!showHelp)
                 return;
-            introWindow = ClickThruBlocker.GUILayoutWindow(introWindowId, introWindow, IntroWindow, "Toolbar Controller Intro", windowStyle);
+            introWindow = GUILayout.Window(introWindowId, introWindow, IntroWindow, "Toolbar Controller Intro", windowStyle);
             if (automoved < 2)
             {
                 introWindow.x = (Screen.width - introWindow.width) / 2;
