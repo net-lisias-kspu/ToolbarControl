@@ -5,11 +5,11 @@ An interface to control both the Blizzy Toolbar and the stock Toolbar without ha
 
 ## In a Hurry
 
-* [Releases](https://github.com/net-lisias-kspu/ToolbarControl/tree/Archive)
-* [Source](https://github.com/net-lisias-kspu/ToolbarControl)
 * [Latest Release](https://github.com/net-lisias-kspu/ToolbarControl/releases)
+	+ [Binaries](https://github.com/net-lisias-kspu/ToolbarControl/tree/Archive)
+* [Source](https://github.com/net-lisias-kspu/ToolbarControl)
 * [Change Log](./CHANGE_LOG.md)
- 
+
 
 ## Description
 
