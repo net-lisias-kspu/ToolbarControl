@@ -1,14 +1,14 @@
 {
-	"NAME":		"ToolbarControl Unofficial",
-	"URL":		"https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/ToolbarControl.version",
-	"DOWNLOAD":	"https://github.com/net-lisias-kspu/ToolbarControl/releases",
-	"CHANGE_LOG":	 "https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/CHANGE_LOG.md",
-	"CHANGE_LOG_URL":"https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/CHANGES.md",
 	"GITHUB":{
 		"USERNAME": "net-lisias-kspu",
 		"REPOSITORY": "Toolbar Control",
 		"ALLOW_PRE_RELEASE": false
 		},
+	"NAME"		: "ToolbarControl Unofficial",
+	"URL"		: "https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/ToolbarControl.version",
+	"DOWNLOAD"	: "https://github.com/net-lisias-kspu/ToolbarControl/releases",
+	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/CHANGE_LOG.md",
+	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-kspu/ToolbarControl/master/CHANGES.md",
 	"VERSION":{
 		"MAJOR":0,
 		"MINOR":1,
