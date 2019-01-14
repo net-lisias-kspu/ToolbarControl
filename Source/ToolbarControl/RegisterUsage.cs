@@ -44,7 +44,7 @@ namespace ToolbarControl_NS
 
         static bool initted = false;
 
-		private static PluginConfig CONFIG = PluginConfig.ForType<ToolbarControl>(TOOLBARCONTROLDATA, TOOLBARCONTROL+".cfg");
+		private static KSPe.IO.Data.ConfigNode CONFIG = KSPe.IO.Data.ConfigNode.ForType<ToolbarControl>(TOOLBARCONTROLDATA, TOOLBARCONTROL+".cfg");
         internal static void SaveData()
         {
 			CONFIG.Clear();
@@ -77,13 +77,13 @@ namespace ToolbarControl_NS
                 return;
             if (CONFIG.IsLoadable)
             {
-                ConfigNode data = CONFIG.Load().Node;
+				ConfigNodeWithSteroids data = CONFIG.Load().NodeWithSteroids;
                 initted = true;
 
                 registeredMods.Clear();
                 if (data.HasValue("showWindowAtStartup"))
                 {
-                    IntroWindowClass.showIntroAtStartup = ToBool(data.GetValue("showWindowAtStartup"));
+                    IntroWindowClass.showIntroAtStartup = data.GetValue<bool>("showWindowAtStartup");
                 }
 
                 foreach (var node in data.GetNodes())
