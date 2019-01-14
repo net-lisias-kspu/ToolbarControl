@@ -40,7 +40,7 @@ namespace ToolbarControl_NS
             }
         }
 
-        ApplicationLauncher.AppScenes visibleInScenes;
+		private ApplicationLauncher.AppScenes visibleInScenes;
 
         public TC_GameScenesVisibility(ApplicationLauncher.AppScenes visibleInScenes)
         {
@@ -308,8 +308,8 @@ namespace ToolbarControl_NS
                 Log.Debug("Missing namespace: " + nameSpace);
         }
 
-        string lastLarge = "";
-        string lastSmall = "";
+		private string lastLarge = "";
+		private string lastSmall = "";
         public void SetTexture(string large, string small)
         {
             if (large == "" && small == "")
@@ -388,31 +388,29 @@ namespace ToolbarControl_NS
 
         }
 
-
-        void SetButtonPos()
+		private void SetButtonPos()
         {
             Vector2 pos = Input.mousePosition;
             pos.y = Screen.height - pos.y;
             buttonClickedMousePos = pos;
         }
 
-        event TC_ClickHandler onTrue = null;
-        event TC_ClickHandler onFalse = null;
-        event Callback onLeftClick = null;
-        event Callback onRightClick = null;
-        event TC_ClickHandler onHover = null;
-        event TC_ClickHandler onHoverOut = null;
-        event TC_ClickHandler onEnable = null;
-        event TC_ClickHandler onDisable = null;
+		private event TC_ClickHandler onTrue = null;
+		private event TC_ClickHandler onFalse = null;
+		private event Callback onLeftClick = null;
+		private event Callback onRightClick = null;
+		private event TC_ClickHandler onHover = null;
+		private event TC_ClickHandler onHoverOut = null;
+		private event TC_ClickHandler onEnable = null;
+		private event TC_ClickHandler onDisable = null;
 
 
         private ApplicationLauncherButton stockButton;
         private IButton blizzyButton;
 
         public bool buttonActive = false;
-
-        bool stockActive = false;
-        bool blizzyActive = false;
+		private bool stockActive = false;
+		private bool blizzyActive = false;
         private bool mutuallyExclusive = false;
 
         public void SetFalse()
@@ -529,7 +527,7 @@ namespace ToolbarControl_NS
             tcList.Add(this);
         }
 
-        bool destroyed = false;
+		private bool destroyed = false;
         public void OnDestroy()
         {
             tcList.Remove(this);
@@ -553,13 +551,13 @@ namespace ToolbarControl_NS
 
             if (ToolbarManager.ToolbarAvailable && this.blizzyActive && this.blizzyButton != null)
             {
-                if (this.lastSmall != "")
-                    this.blizzyButton.TexturePath = lastSmall;
-                else
-                    this.blizzyButton.TexturePath = this.buttonActive ? this.BlizzyToolbarIconActive : this.BlizzyToolbarIconInactive;
-            }
-            //else
-            if (this.stockActive)
+				this.blizzyButton.TexturePath = 
+					this.lastSmall != "" ? lastSmall 
+					: this.buttonActive  ? this.BlizzyToolbarIconActive 
+					: this.BlizzyToolbarIconInactive;
+			}
+			//else
+			if (this.stockActive)
             {
                 if (this.stockButton == null && !firstTime)
                     Log.Debug("stockButton is null, namespace: " + this.nameSpace);
@@ -569,7 +567,7 @@ namespace ToolbarControl_NS
                     {
                         if (this.lastLarge != "")
                         {
-                            var tex = (Texture)GetTexture(this.lastLarge, false);
+							Texture tex = (Texture)GetTexture(this.lastLarge, false);
                             if (tex != null)
                             {
                                 this.stockButton.SetTexture(tex);
@@ -577,7 +575,7 @@ namespace ToolbarControl_NS
                         }
                         else
                         {
-                            var tex = (Texture)GetTexture(this.buttonActive ? this.StockToolbarIconActive : this.StockToolbarIconInactive, false);
+							Texture tex = (Texture)GetTexture(this.buttonActive ? this.StockToolbarIconActive : this.StockToolbarIconInactive, false);
                             if (tex != null)
                             {
                                 this.stockButton.SetTexture(tex);
@@ -588,136 +586,136 @@ namespace ToolbarControl_NS
             }
         }
 
-        //
-        // The following function was initially copied from @JPLRepo's AmpYear mod, which is covered by the GPL, as is this mod
-        //
-        // This function will attempt to load either a PNG or a JPG from the specified path.  
-        // It first checks to see if the actual file is there, if not, it then looks for either a PNG or a JPG
-        //
-        // easier to specify different cases than to change case to lower.  This will fail on MacOS and Linux
-        // if a suffix has mixed case
-        static string[] imgSuffixes = new string[] { ".png", ".jpg", ".gif", ".PNG", ".JPG", ".GIF", ".dds", ".DDS" };
-        public static Boolean LoadImageFromFile(ref Texture2D tex, String fileNamePath)
-        {
+		//
+		// The following function was initially copied from @JPLRepo's AmpYear mod, which is covered by the GPL, as is this mod
+		//
+		// This function will attempt to load either a PNG or a JPG from the specified path.  
+		// It first checks to see if the actual file is there, if not, it then looks for either a PNG or a JPG
+		//
+		// easier to specify different cases than to change case to lower.  This will fail on MacOS and Linux
+		// if a suffix has mixed case
+		private static string[] imgSuffixes = new string[] { ".png", ".jpg", ".gif", ".PNG", ".JPG", ".GIF", ".dds", ".DDS" };
+		public static Boolean LoadImageFromFile(ref Texture2D tex, String fileNamePath)
+		{
 
-            Boolean blnReturn = false;
-            bool dds = false;
-            try
-            {
-                string path = fileNamePath;
-                if (!System.IO.File.Exists(fileNamePath))
-                {
-                    // Look for the file with an appended suffix.
-                    for (int i = 0; i < imgSuffixes.Length; i++)
+			Boolean blnReturn = false;
+			bool dds = false;
+			try
+			{
+				string path = fileNamePath;
+				if (!System.IO.File.Exists(fileNamePath))
+				{
+					// Look for the file with an appended suffix.
+					for (int i = 0; i < imgSuffixes.Length; i++)
 
-                        if (System.IO.File.Exists(fileNamePath + imgSuffixes[i]))
-                        {
-                            path = fileNamePath + imgSuffixes[i];
-                            dds = imgSuffixes[i] == ".dds" || imgSuffixes[i] == ".DDS";
-                            break;
-                        }
-                }
+						if (System.IO.File.Exists(fileNamePath + imgSuffixes[i]))
+						{
+							path = fileNamePath + imgSuffixes[i];
+							dds = imgSuffixes[i] == ".dds" || imgSuffixes[i] == ".DDS";
+							break;
+						}
+				}
 
-                //File Exists check
-                if (System.IO.File.Exists(path))
-                {
-                    try
-                    {
-                        if (dds)
-                        {
-                            Log.Info("LoadIimageFromFile, dds");
-                            byte[] bytes = System.IO.File.ReadAllBytes(path);
-
-
-                            System.IO.BinaryReader binaryReader = new System.IO.BinaryReader(new System.IO.MemoryStream(bytes));
-                            uint num = binaryReader.ReadUInt32();
-
-                            if (num != DDSValues.uintMagic)
-                            {
-                                UnityEngine.Debug.LogError("DDS: File is not a DDS format file!");
-                                return false;
-                            }
-                            DDSHeader ddSHeader = new DDSHeader(binaryReader);
-
-                            TextureFormat tf = TextureFormat.Alpha8;
-                            if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT1)
-                                tf = TextureFormat.DXT1;
-                            if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT5)
-                                tf = TextureFormat.DXT5;
-                            if (tf == TextureFormat.Alpha8)
-                                return false;
+				//File Exists check
+				if (System.IO.File.Exists(path))
+				{
+					try
+					{
+						if (dds)
+						{
+							Log.Info("LoadIimageFromFile, dds");
+							byte[] bytes = System.IO.File.ReadAllBytes(path);
 
 
-                            tex = LoadTextureDXT(bytes, tf);
-                        }
-                        else
-                        {
-                            tex.LoadImage(System.IO.File.ReadAllBytes(path));
-                        }
-                        blnReturn = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Failed to load the texture: " + path);
-                        Log.Error(ex.Message);
-                    }
-                }
-                else
-                {
-                    Log.Debug("Cannot find texture to load from file:" + fileNamePath);
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Failed to load (are you missing a file):" + fileNamePath);
-                Log.Error(ex.Message);
-            }
-            return blnReturn;
-        }
-        public static Texture2D LoadTextureDXT(byte[] ddsBytes, TextureFormat textureFormat)
-        {
-            if (textureFormat != TextureFormat.DXT1 && textureFormat != TextureFormat.DXT5)
-                throw new Exception("Invalid TextureFormat. Only DXT1 and DXT5 formats are supported by this method.");
+							System.IO.BinaryReader binaryReader = new System.IO.BinaryReader(new System.IO.MemoryStream(bytes));
+							uint num = binaryReader.ReadUInt32();
 
-            byte ddsSizeCheck = ddsBytes[4];
-            if (ddsSizeCheck != 124)
-                throw new Exception("Invalid DDS DXTn texture. Unable to read");  //this header byte should be 124 for DDS image files
+							if (num != DDSValues.uintMagic)
+							{
+								UnityEngine.Debug.LogError("DDS: File is not a DDS format file!");
+								return false;
+							}
+							DDSHeader ddSHeader = new DDSHeader(binaryReader);
 
-            int height = ddsBytes[13] * 256 + ddsBytes[12];
-            int width = ddsBytes[17] * 256 + ddsBytes[16];
+							TextureFormat tf = TextureFormat.Alpha8;
+							if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT1)
+								tf = TextureFormat.DXT1;
+							if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT5)
+								tf = TextureFormat.DXT5;
+							if (tf == TextureFormat.Alpha8)
+								return false;
 
-            int DDS_HEADER_SIZE = 128;
-            byte[] dxtBytes = new byte[ddsBytes.Length - DDS_HEADER_SIZE];
-            Buffer.BlockCopy(ddsBytes, DDS_HEADER_SIZE, dxtBytes, 0, ddsBytes.Length - DDS_HEADER_SIZE);
 
-            Texture2D texture = new Texture2D(width, height, textureFormat, false);
-            texture.LoadRawTextureData(dxtBytes);
-            texture.Apply();
+							tex = LoadTextureDXT(bytes, tf);
+						}
+						else
+						{
+							tex.LoadImage(System.IO.File.ReadAllBytes(path));
+						}
+						blnReturn = true;
+					}
+					catch (Exception ex)
+					{
+						Log.Error("Failed to load the texture: " + path);
+						Log.Error(ex.Message);
+					}
+				}
+				else
+				{
+					Log.Debug("Cannot find texture to load from file:" + fileNamePath);
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Error("Failed to load (are you missing a file):" + fileNamePath);
+				Log.Error(ex.Message);
+			}
+			return blnReturn;
+		}
+		public static Texture2D LoadTextureDXT(byte[] ddsBytes, TextureFormat textureFormat)
+		{
+			if (textureFormat != TextureFormat.DXT1 && textureFormat != TextureFormat.DXT5)
+				throw new Exception("Invalid TextureFormat. Only DXT1 and DXT5 formats are supported by this method.");
 
-            return (texture);
-        }
+			byte ddsSizeCheck = ddsBytes[4];
+			if (ddsSizeCheck != 124)
+				throw new Exception("Invalid DDS DXTn texture. Unable to read");  //this header byte should be 124 for DDS image files
 
-        Texture2D GetTexture(string path, bool b)
+			int height = ddsBytes[13] * 256 + ddsBytes[12];
+			int width = ddsBytes[17] * 256 + ddsBytes[16];
+
+			int DDS_HEADER_SIZE = 128;
+			byte[] dxtBytes = new byte[ddsBytes.Length - DDS_HEADER_SIZE];
+			Buffer.BlockCopy(ddsBytes, DDS_HEADER_SIZE, dxtBytes, 0, ddsBytes.Length - DDS_HEADER_SIZE);
+
+			Texture2D texture = new Texture2D(width, height, textureFormat, false);
+			texture.LoadRawTextureData(dxtBytes);
+			texture.Apply();
+
+			return (texture);
+		}
+
+		private Texture2D GetTexture(string path, bool b)
         {
             Log.Debug("GetTexture, path: " + KSPUtil.ApplicationRootPath + "GameData/" + path);
 
             Texture2D tex = new Texture2D(16, 16, TextureFormat.ARGB32, false);
 
             // Since most mods have their button textures in files, try loading from the file first
-
             if (LoadImageFromFile(ref tex, KSPUtil.ApplicationRootPath + "GameData/" + path))
                 return tex;
+
             if (GameDatabase.Instance.ExistsTexture(path))
             {
                 tex = GameDatabase.Instance.GetTexture(path, false);
                 return tex;
             }
-
+            
      
-            Log.Error("Cannot find texture to load:" + path);
-  
+            Log.Error("Cannot find texture to load:" + path); 
             return null;
         }
+        
         private void OnGUIAppLauncherReady()
         {
             if (destroyed)
@@ -801,16 +799,16 @@ namespace ToolbarControl_NS
             }
         }
 
-#region ActiveInactive
-        void SetButtonActive()
-        {
-            this.buttonActive = true;
-            if (onTrue != null)
-                onTrue();
-            UpdateToolbarIcon();
-        }
+		#region ActiveInactive
+		private void SetButtonActive()
+		{
+			this.buttonActive = true;
+			if (onTrue != null)
+				onTrue();
+			UpdateToolbarIcon();
+		}
 
-        void SetButtonInactive()
+		private void SetButtonInactive()
         {
             this.buttonActive = false;
             if (onFalse != null)
@@ -838,14 +836,14 @@ namespace ToolbarControl_NS
             RemoveStockButton();
         }
 
-#region tooltip
-        bool drawTooltip = false;
-        float starttimeToolTipShown = 0;
-        Vector2 tooltipSize;
-        float tooltipX, tooltipY;
-        Rect tooltipRect;
+		#region tooltip
+		private bool drawTooltip = false;
+		private float starttimeToolTipShown = 0;
+		private Vector2 tooltipSize;
+		private float tooltipX, tooltipY;
+		private Rect tooltipRect;
 
-        void OnGUI()
+		private void OnGUI()
         {
             if (HighLogic.LoadedScene == GameScenes.SPACECENTER ||
                 HighLogic.LoadedScene == GameScenes.EDITOR ||
@@ -866,8 +864,7 @@ namespace ToolbarControl_NS
             }
         }
 
-
-        void SetupTooltip()
+		private void SetupTooltip()
         {
             if (ToolTip != null && ToolTip.Trim().Length > 0)
             {
@@ -896,7 +893,8 @@ namespace ToolbarControl_NS
 
             }
         }
-        void TooltipWindow(int id)
+
+		private void TooltipWindow(int id)
         {
             GUI.Label(new Rect(2, 0, tooltipRect.width - 2, tooltipRect.height), ToolTip, HighLogic.Skin.label);
         }
@@ -1014,8 +1012,8 @@ namespace ToolbarControl_NS
             UpdateToolbarIcon(false);
         }
 
-        bool doSetFalse = false, doSetFalseValue = false;
-        bool doSetTrue = false, doSetTrueValue = false;
+		private bool doSetFalse = false, doSetFalseValue = false;
+		private bool doSetTrue = false, doSetTrueValue = false;
 
         public void SetFalse(bool makeCall = false)
         {

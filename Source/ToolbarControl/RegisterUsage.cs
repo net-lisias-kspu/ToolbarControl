@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using KSP.UI.Screens;
+﻿using System.Collections.Generic;
 using KSPe;
 
 namespace ToolbarControl_NS
@@ -36,13 +31,12 @@ namespace ToolbarControl_NS
         internal static Dictionary<string, Mod> registeredMods = new Dictionary<string, Mod>();
         internal static List<Mod> sortedModList = new List<Mod>();
 
-        //internal static List<Mod> registeredMods = new List<Mod>();
+		//internal static List<Mod> registeredMods = new List<Mod>();
 
-        const string TOOLBARCONTROL = "ToolbarControl";
-        const string TOOLBARCONTROLDATA = "ToolbarControlData";
-        const string DATA = "DATA";
-
-        static bool initted = false;
+		private const string TOOLBARCONTROL = "ToolbarControl";
+		private const string TOOLBARCONTROLDATA = "ToolbarControlData";
+		private const string DATA = "DATA";
+		private static bool initted = false;
 
 		private static KSPe.IO.Data.ConfigNode CONFIG = KSPe.IO.Data.ConfigNode.ForType<ToolbarControl>(TOOLBARCONTROLDATA, TOOLBARCONTROL+".cfg");
         internal static void SaveData()
@@ -50,7 +44,7 @@ namespace ToolbarControl_NS
 			CONFIG.Clear();
 
             CONFIG.Node.AddValue("showWindowAtStartup", IntroWindowClass.showIntroAtStartup);
-            foreach (var s in registeredMods)
+            foreach (KeyValuePair<string, Mod> s in registeredMods)
             {
                 ConfigNode nodeData = new ConfigNode();
                 nodeData.AddValue("name", s.Key);
@@ -64,14 +58,12 @@ namespace ToolbarControl_NS
 			CONFIG.Save();
         }
 
-        static bool ToBool(string aText)
+		private static bool ToBool(string aText)
         {
-            if (aText == null)
-                return false;
-            return aText.ToLower() == "true" || aText.ToLower() == "on" || aText.ToLower() == "yes";
-        }
+			return aText != null && aText.ToLower() == "true" || aText.ToLower() == "on" || aText.ToLower() == "yes";
+		}
 
-        internal static void LoadData()
+		internal static void LoadData()
         {
             if (initted)
                 return;
@@ -86,7 +78,7 @@ namespace ToolbarControl_NS
                     IntroWindowClass.showIntroAtStartup = data.GetValue<bool>("showWindowAtStartup");
                 }
 
-                foreach (var node in data.GetNodes())
+                foreach (ConfigNode node in data.GetNodes())
                 {
                     if (node.HasValue("name") && node.HasValue("useBlizzy"))
                     {
@@ -172,14 +164,10 @@ namespace ToolbarControl_NS
             if (useBlizzy == null)
             {
 
-                if (registeredMods.ContainsKey(NameSpace))
-                {
-                    return registeredMods[NameSpace].useBlizzy;
-                }
-                else return false;
-            }
+				return registeredMods.ContainsKey(NameSpace) && registeredMods[NameSpace].useBlizzy;
+			}
 
-            registeredMods[NameSpace].useBlizzy = (bool)useBlizzy;
+			registeredMods[NameSpace].useBlizzy = (bool)useBlizzy;
             SaveData();
             return (bool)useBlizzy;
         }
@@ -189,14 +177,10 @@ namespace ToolbarControl_NS
             LoadData();
             if (useStock == null)
             {
-                if (registeredMods.ContainsKey(NameSpace))
-                {
-                    return registeredMods[NameSpace].useStock;
-                }
-                else return false;
-            }
+				return registeredMods.ContainsKey(NameSpace) && registeredMods[NameSpace].useStock;
+			}
 
-            registeredMods[NameSpace].useStock = (bool)useStock;
+			registeredMods[NameSpace].useStock = (bool)useStock;
             SaveData();
             return (bool)useStock;
         }
