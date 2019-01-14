@@ -12,11 +12,10 @@ namespace ToolbarControl_NS
         internal static bool showHelp = false;
         internal static bool showIntroAtStartup = true;
         internal static GUIStyle windowStyle = null;
-
-        Rect introWindow;
-        int introWindowId;
-        int MAIN_WIDTH = Screen.height * 3 / 4;
-        int MAIN_HEIGHT = 400;
+		private Rect introWindow;
+		private int introWindowId;
+		private int MAIN_WIDTH = Screen.height * 3 / 4;
+		private int MAIN_HEIGHT = 400;
         internal static int automoved = 0;
 
         GUIStyle areaStyle;
@@ -38,9 +37,11 @@ namespace ToolbarControl_NS
             MAIN_HEIGHT = Screen.height * 3 / 4;
 
             introWindow = new Rect((Screen.width - MAIN_WIDTH) / 2, (Screen.height - MAIN_HEIGHT) / 2, MAIN_WIDTH, MAIN_HEIGHT);
-            areaStyle = new GUIStyle(HighLogic.Skin.textArea);
-            areaStyle.richText = true;
-            ToolbarControl.LoadData();
+			areaStyle = new GUIStyle(HighLogic.Skin.textArea)
+			{
+				richText = true
+			};
+			ToolbarControl.LoadData();
             showHelp = showIntroAtStartup;
         }
 
@@ -52,7 +53,7 @@ namespace ToolbarControl_NS
                 windowStyle = new GUIStyle(HighLogic.Skin.window);
                 windowStyle.active.background = windowStyle.normal.background;
                 Texture2D tex = windowStyle.normal.background;
-                var pixels = tex.GetPixels32();
+				Color32[] pixels = tex.GetPixels32();
 
                 for (int i = 0; i < pixels.Length; ++i)
                     pixels[i].a = 255;
@@ -121,11 +122,11 @@ namespace ToolbarControl_NS
             }
         }
 
+		private List<string> lines = new List<string>();
+		private List<Texture2D> images = new List<Texture2D>();
+		private bool loaded = false;
 
-        List<string> lines = new List<string>();
-        List<Texture2D> images = new List<Texture2D>();
-        bool loaded = false;
-        void ProcessLine(string line)
+		private void ProcessLine(string line)
         {
             Log.Debug("ProcessLine, line: " + line);
             if (line.Length >= 7 && line.Substring(0, 7) == "<IMAGE=")
@@ -145,7 +146,7 @@ namespace ToolbarControl_NS
             }
         }
 
-        void LoadAndDisplay(string f)
+		private void LoadAndDisplay(string f)
         {
             if (!loaded)
             {
@@ -154,7 +155,7 @@ namespace ToolbarControl_NS
             }
             int imgcnt = 0;
             string l = "";
-            foreach (var line in lines)
+            foreach (string line in lines)
             {
                 if (line.Length >= 7 && line.Substring(0, 7) == "<IMAGE=")
                 {
@@ -192,7 +193,7 @@ namespace ToolbarControl_NS
             }
         }
 
-        void IntroWindow(int id)
+		private void IntroWindow(int id)
         {
             LoadAndDisplay(KSPUtil.ApplicationRootPath + "GameData/" + IntroPath);
 
@@ -201,9 +202,7 @@ namespace ToolbarControl_NS
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("OK", GUILayout.Width(120)))
-            {
                 showHelp = false;
-            }
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Hide this window at startup"))
             {

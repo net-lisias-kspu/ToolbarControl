@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using KSP.UI.Screens;
-using System.Linq;
 
 namespace ToolbarControl_NS
 {
@@ -10,17 +9,16 @@ namespace ToolbarControl_NS
     {
         internal const string MODID = "ToolbarController_NS";
         internal const string MODNAME = "Toolbar Controller";
-
-        GUIStyle scrollbar_style = new GUIStyle(HighLogic.Skin.scrollView);
-        ToolbarControl toolbarControl;
-        bool GUIEnabled = false;
-        Rect WindowRect;
-        int scrollBarHeight = Math.Min(500, Screen.height - 200);
-        Vector2 scrollVector;
+		private readonly GUIStyle scrollbar_style = new GUIStyle(HighLogic.Skin.scrollView);
+		private ToolbarControl toolbarControl;
+		private bool GUIEnabled = false;
+		private Rect WindowRect;
+		private int scrollBarHeight = Math.Min(500, Screen.height - 200);
+		private Vector2 scrollVector;
         internal static bool startupCompleted = false;
-        bool initted = false;
+		private bool initted = false;
 
-        void Start()
+        public void Start()
         {
             startupCompleted = true;
 #if false
@@ -37,7 +35,7 @@ namespace ToolbarControl_NS
             DontDestroyOnLoad(this);
         }
 
-        void AddToolbarButton()
+		private void AddToolbarButton()
         {
 
             toolbarControl = gameObject.AddComponent<ToolbarControl>();
@@ -53,12 +51,12 @@ namespace ToolbarControl_NS
             );
         }
 
-        void ToggleGUI()
+		private void ToggleGUI()
         {
             GUIEnabled = !GUIEnabled;
         }
 
-        void InitGUIStuff()
+		private void InitGUIStuff()
         {
             // Calculate height of scrollbox
             GUIContent content = new GUIContent("a");
@@ -74,8 +72,10 @@ namespace ToolbarControl_NS
 
             initted = true;
         }
+        
         internal static GUIStyle windowStyle = null;
-        void OnGUI()
+
+		private void OnGUI()
         {
             if (!GUIEnabled)
                 return;
@@ -87,7 +87,7 @@ namespace ToolbarControl_NS
                 windowStyle = new GUIStyle(HighLogic.Skin.window);
                 windowStyle.active.background = windowStyle.normal.background;
                 Texture2D tex = windowStyle.normal.background;
-                var pixels = tex.GetPixels32();
+				Color32[] pixels = tex.GetPixels32();
 
                 for (int i = 0; i < pixels.Length; ++i)
                     pixels[i].a = 255;
@@ -100,13 +100,13 @@ namespace ToolbarControl_NS
             WindowRect = GUILayout.Window(4946386, WindowRect, DoWindow, "Toolbar Controller", windowStyle);
         }
 
-        void OnDestroy()
+        public void OnDestroy()
         {
             toolbarControl.OnDestroy();
             Destroy(toolbarControl);
         }
 
-        void DoWindow(int id)
+		private void DoWindow(int id)
         {
 
             GUILayout.BeginHorizontal();
@@ -131,7 +131,7 @@ namespace ToolbarControl_NS
 
             scrollVector = GUILayout.BeginScrollView(scrollVector, scrollbar_style, GUILayout.Height(scrollBarHeight));
 
-            foreach (var mod in ToolbarControl.sortedModList)
+            foreach (ToolbarControl.Mod mod in ToolbarControl.sortedModList)
             {
                 bool doUseButtons = false;
                 GUILayout.BeginHorizontal();
@@ -212,9 +212,7 @@ namespace ToolbarControl_NS
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Close"))
-            {
                 GUIEnabled = false;
-            }
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("?"))
             {

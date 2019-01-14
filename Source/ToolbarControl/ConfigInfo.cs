@@ -1,10 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
-using KSP.UI.Screens;
+﻿using UnityEngine;
 
 namespace ToolbarControl_NS
 {
@@ -16,7 +10,7 @@ namespace ToolbarControl_NS
 
         static public bool debugMode = false;
 
-        void Start()
+        public void Start()
         {
             Instance = this;
             LoadData();
