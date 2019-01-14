@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using KSP.UI.Screens;
-using KSPe;
 
 namespace ToolbarControl_NS
 {
@@ -13,7 +12,7 @@ namespace ToolbarControl_NS
     public class ConfigInfo : MonoBehaviour
     {
         public static ConfigInfo Instance;
-		static readonly PluginConfig DEBUGCFG = PluginConfig.ForType<ToolbarControl>("Debug");
+		private static readonly KSPe.IO.Data.ConfigNode DEBUGCFG = KSPe.IO.Data.ConfigNode.ForType<ToolbarControl>("Debug");
 
         static public bool debugMode = false;
 
