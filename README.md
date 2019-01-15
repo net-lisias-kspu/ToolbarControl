@@ -1,4 +1,4 @@
-# Toolbar Controller Unofficial
+# Toolbar Controller /L Unofficial
 
 An interface to control both the Blizzy Toolbar and the stock Toolbar without having to code for each one. Unofficial fork by Lisias.
 
@@ -8,15 +8,18 @@ An interface to control both the Blizzy Toolbar and the stock Toolbar without ha
 * [Latest Release](https://github.com/net-lisias-kspu/ToolbarControl/releases)
 	+ [Binaries](https://github.com/net-lisias-kspu/ToolbarControl/tree/Archive)
 * [Source](https://github.com/net-lisias-kspu/ToolbarControl)
-* [Change Log](./CHANGE_LOG.md)
+* Documentation
+	+ [Project's README](https://github.com/net-lisias-kspu/ToolbarControl/blob/master/README.md)
+	+ [Install Instructions](https://github.com/net-lisias-kspu/ToolbarControl/blob/master/INSTALL.md)
+	+ [Change Log](./CHANGE_LOG.md)
+	+ [TODO](./TODO.md) list
 
 
 ## Description
 
 An interface to control both the Blizzy Toolbar and the stock Toolbar without having to code for each one.
 
-Most important
-All mods using this should add the following line to the AssemblyInfo.cs file:
+Most important: All mods using this should add the following line to the AssemblyInfo.cs file:
 
 	[assembly: KSPAssemblyDependency("ToolbarController", 1, 0)]
 
@@ -229,14 +232,7 @@ namespace KerbalSlingshotter
 
 ## Installation
 
-To install, place the GameData folder inside your Kerbal Space Program folder.
-
-**REMOVE ANY OLD VERSIONS OF THE PRODUCT BEFORE INSTALLING**.
-
-### Dependencies
-
-* [KSP API Extensions/L](https://github.com/net-lisias-ksp/KSPAPIExtensions) 2.0 or newer
-* [Click Through Blocker](https://forum.kerbalspaceprogram.com/index.php?/topic/170747-141-click-through-blocker/)
+Detailed installation instructions are now on its own file (see the [In a Hurry](#in-a-hurry) section) and on the distribution file.
 
 ### License:
 
