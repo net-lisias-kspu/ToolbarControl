@@ -238,6 +238,8 @@ Detailed installation instructions are now on its own file (see the [In a Hurry]
 
 Released under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.txt). See [here](./LICENSE)
 
+Please note the copyrights and trademarks in [NOTICE](./NOTICE)
+
 
 ## UPSTREAM
 
