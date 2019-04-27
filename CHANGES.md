@@ -1,5 +1,10 @@
 # Toolbar Controller :: Changes
 
+* 2019-0427: 0.1.6.21 (lisias) for KSP >= 1.4.1
+	+ Bumping up version to catch up with upstream's, and avoid being kicked out by new Add'Ons relying on the DLL version for compatibility
+	+ Properly naming the think as '/L Unofficial'
+	+ Simplifying KSP versioning control
+	+ Properly stating compatibility to KSP 1.4.1 and above, as I don't test it on 1.4.0 and below.
 * 2019-0115: 0.1.6.18 (lisias) for KSP >= 1.4
 	+ Adding KSPe as hard dependency
 		- Using logging facilities
