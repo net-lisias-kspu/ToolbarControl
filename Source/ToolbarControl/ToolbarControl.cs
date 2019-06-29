@@ -593,9 +593,9 @@ namespace ToolbarControl_NS
 		// easier to specify different cases than to change case to lower.  This will fail on MacOS and Linux
 		// if a suffix has mixed case
 		private static string[] imgSuffixes = new string[] { ".png", ".jpg", ".gif", ".PNG", ".JPG", ".GIF", ".dds", ".DDS" };
-		public static Boolean LoadImageFromFile(ref Texture2D tex, String fileNamePath)
+		public static Boolean LoadImageFromFile(out Texture2D tex, String fileNamePath)
 		{
-
+            tex = new Texture2D(2, 2, TextureFormat.ARGB32, false); // Size and format will change!
 			Boolean blnReturn = false;
 			bool dds = false;
 			try
@@ -697,10 +697,9 @@ namespace ToolbarControl_NS
         {
             Log.Debug("GetTexture, path: " + KSPUtil.ApplicationRootPath + "GameData/" + path);
 
-            Texture2D tex = new Texture2D(16, 16, TextureFormat.ARGB32, false);
 
             // Since most mods have their button textures in files, try loading from the file first
-            if (LoadImageFromFile(ref tex, KSPUtil.ApplicationRootPath + "GameData/" + path))
+            if (LoadImageFromFile(out Texture2D tex, KSPUtil.ApplicationRootPath + "GameData/" + path))
                 return tex;
 
             if (GameDatabase.Instance.ExistsTexture(path))
