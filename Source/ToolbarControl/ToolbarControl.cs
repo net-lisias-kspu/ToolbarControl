@@ -595,9 +595,9 @@ namespace ToolbarControl_NS
 		private static string[] imgSuffixes = new string[] { ".png", ".jpg", ".gif", ".PNG", ".JPG", ".GIF", ".dds", ".DDS" };
 		public static Boolean LoadImageFromFile(out Texture2D tex, String fileNamePath)
 		{
-            tex = new Texture2D(2, 2, TextureFormat.ARGB32, false); // Size and format will change!
 			Boolean blnReturn = false;
 			bool dds = false;
+            tex = new Texture2D(2, 2, TextureFormat.ARGB32, false); // Fallback to return something back when things goes through the tubes.
 			try
 			{
 				string path = fileNamePath;
@@ -641,13 +641,13 @@ namespace ToolbarControl_NS
 							if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT5)
 								tf = TextureFormat.DXT5;
 							if (tf == TextureFormat.Alpha8)
-								return false;
-
+                                return false;
 
 							tex = LoadTextureDXT(bytes, tf);
 						}
 						else
 						{
+                            tex = new Texture2D(16, 16, TextureFormat.ARGB32, false);
 							tex.LoadImage(System.IO.File.ReadAllBytes(path));
 						}
 						blnReturn = true;
