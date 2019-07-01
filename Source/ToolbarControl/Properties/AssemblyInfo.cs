@@ -36,5 +36,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion(ToolbarControl_NS.Version.Number)]
 [assembly: AssemblyVersion(ToolbarControl_NS.Version.Number)]
 
-[assembly: KSPAssembly("ToolbarController", ToolbarControl_NS.Version.build, ToolbarControl_NS.Version.minor)]
+//[assembly: KSPAssembly("ToolbarController", ToolbarControl_NS.Version.major, ToolbarControl_NS.Version.minor)]
+[assembly: KSPAssembly("ToolbarController", 1, 0)] // Preventing breaking dependences keeping it at part to upstream
 [assembly: KSPAssemblyDependency("KSPe", 2, 1)]
