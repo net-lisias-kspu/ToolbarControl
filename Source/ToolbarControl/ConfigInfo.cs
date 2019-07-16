@@ -8,7 +8,11 @@ namespace ToolbarControl_NS
 		public static ConfigInfo Instance;
 		private static readonly KSPe.IO.Data.ConfigNode DEBUGCFG = KSPe.IO.Data.ConfigNode.ForType<ToolbarControl>("Debug");
 
-		static public bool debugMode = false;
+		public static bool debugMode
+		{
+			get { return (Log.LEVEL.TRACE == Log.Level);  }
+			set { Log.Level = value ? Log.LEVEL.TRACE : Log.LEVEL.INFO; }
+		}
 
 		public void Start()
 		{

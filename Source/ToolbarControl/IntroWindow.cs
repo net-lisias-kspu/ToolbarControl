@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
+
 using GUI = KSPe.UI.GUI;
 using GUILayout = KSPe.UI.GUILayout;
 
@@ -83,7 +84,7 @@ namespace ToolbarControl_NS
 
 		private bool Load(string fileName)
 		{
-			Log.Debug("Load, fileName: " + fileName);
+			Log.Trace("Load, fileName: {0}", fileName);
 			// Handle any problems that might arise when reading the text
 			try
 			{
@@ -94,7 +95,7 @@ namespace ToolbarControl_NS
 				// Immediately clean up the reader after this block of code is done.
 				// You generally use the "using" statement for potentially memory-intensive objects
 				// instead of relying on garbage collection.
-				// (Do not confuse this with the using directive for namespace at the
+				// (Do not confuse this with the using directive for namespace at the 
 				// beginning of a class!)
 				using (theReader)
 				{
@@ -109,7 +110,7 @@ namespace ToolbarControl_NS
 						}
 						while (line != null);
 					}
-					// Done reading, close the reader and return true to broadcast success
+					// Done reading, close the reader and return true to broadcast success	  
 					theReader.Close();
 					return true;
 				}
@@ -130,7 +131,7 @@ namespace ToolbarControl_NS
 
 		private void ProcessLine(string line)
 		{
-			Log.Debug("ProcessLine, line: " + line);
+			Log.Debug("ProcessLine, line: {0}", line);
 			if (line.Length >= 7 && line.Substring(0, 7) == "<IMAGE=")
 			{
 				string s = line.Substring(7, line.Length - 8);

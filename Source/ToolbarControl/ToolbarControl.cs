@@ -265,7 +265,7 @@ namespace ToolbarControl_NS
 			ApplicationLauncher.AppScenes visibleInScenes, string nameSpace, string toolbarId, string largeToolbarIconActive, string largeToolbarIconInactive, string smallToolbarIconActive, string smallToolbarIconInactive, string toolTip = null)
 
 		{
-			Log.Debug("AddToAlltoolbars main, nameSpace: {0},	 toolbarId: {1},	largeToolbarIconActive: {2}, largeToolbarIconInactive: {3}, smallToolbarIconActive: {4},	smallToolbarIconInactive: {5},	tooltip: {6}"
+			Log.Trace("AddToAlltoolbars main, nameSpace: {0},	 toolbarId: {1},	largeToolbarIconActive: {2}, largeToolbarIconInactive: {3}, smallToolbarIconActive: {4},	smallToolbarIconInactive: {5},	tooltip: {6}"
 					, nameSpace, toolbarId, largeToolbarIconActive, largeToolbarIconInactive, smallToolbarIconActive, smallToolbarIconInactive, toolTip
 				);
 
@@ -297,7 +297,7 @@ namespace ToolbarControl_NS
 				UseButtons(nameSpace);
 			}
 			else
-				Log.Debug("Missing namespace: {0}", nameSpace);
+				Log.Trace("Missing namespace: {0}", nameSpace);
 		}
 
 		private string lastLarge = "";
@@ -442,7 +442,7 @@ namespace ToolbarControl_NS
 			}
 		}
 
-#region SetButtonSettings
+	#region SetButtonSettings
 		private void SetBlizzySettings()
 		{
 			if (!ToolbarManager.ToolbarAvailable)
@@ -458,7 +458,7 @@ namespace ToolbarControl_NS
 
 			if (this.blizzyButton == null && this.blizzyActive)
 			{
-				Log.Debug("Adding blizzyButton, nameSpace: " + nameSpace + ", toolbarId: " + toolbarId + ", ToolTip: " + ToolTip);
+				Log.Trace("Adding blizzyButton, nameSpace: {0}, toolbarId: {1}, ToolTip: {2}", nameSpace, toolbarId, ToolTip);
 				this.blizzyButton = ToolbarManager.Instance.add(nameSpace, toolbarId);
 				this.blizzyButton.ToolTip = ToolTip;
 				this.blizzyButton.OnClick += this.button_Click;
@@ -481,7 +481,7 @@ namespace ToolbarControl_NS
 			}
 			this.UpdateToolbarIcon();
 		}
-#if false
+	#if false
 		private void OnMouseEnter()
 		{
 
@@ -490,7 +490,7 @@ namespace ToolbarControl_NS
 		{
 
 		}
-#endif
+	#endif
 		private void SetStockSettings()
 		{
 			if (!this.blizzyActive)
@@ -510,7 +510,7 @@ namespace ToolbarControl_NS
 			}
 			this.UpdateToolbarIcon(true);
 		}
-#endregion
+	#endregion
 
 		private void StartAfterInit()
 		{
@@ -561,7 +561,7 @@ namespace ToolbarControl_NS
 			if (this.stockActive)
 			{
 				if (this.stockButton == null && !firstTime)
-					Log.Debug("stockButton is null, namespace: " + this.nameSpace);
+					Log.Trace("stockButton is null, namespace: {0}", this.nameSpace);
 				else
 				{
 					if (this.stockButton != null)
@@ -668,7 +668,7 @@ namespace ToolbarControl_NS
 			}
 		}
 
-		#region ActiveInactive
+	#region ActiveInactive
 		private void SetButtonActive()
 		{
 			this.buttonActive = true;
@@ -698,14 +698,14 @@ namespace ToolbarControl_NS
 				SetButtonInactive();
 			}
 		}
-#endregion
+	#endregion
 
 		private void OnGUIAppLauncherDestroyed()
 		{
 			RemoveStockButton();
 		}
 
-		#region tooltip
+	#region tooltip
 		private bool drawTooltip = false;
 		private float starttimeToolTipShown = 0;
 		private Vector2 tooltipSize;
@@ -774,7 +774,7 @@ namespace ToolbarControl_NS
 				GUI.Label(tooltipRect, ToolTip, HighLogic.Skin.label);
 			}
 		}
-#endregion
+	#endregion
 
 		/// <summary>
 		/// Checks whether the given stock button was created by this mod.
