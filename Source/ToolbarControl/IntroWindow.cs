@@ -3,6 +3,8 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
+using GUI = KSPe.UI.GUI;
+using GUILayout = KSPe.UI.GUILayout;
 
 namespace ToolbarControl_NS
 {

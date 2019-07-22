@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using KSP.UI.Screens;
+using GUI = KSPe.UI.GUI;
+using GUILayout = KSPe.UI.GUILayout;
 
 namespace ToolbarControl_NS
 {

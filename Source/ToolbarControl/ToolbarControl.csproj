@@ -87,6 +87,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\..\..\..\..\LIB\managed\1.4.1\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="KSPe.UI">
+      <HintPath>..\..\..\..\..\..\LIB\plugins\KSPe.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

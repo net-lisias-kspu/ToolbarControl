@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using KSP.UI;
 using KSP.UI.Screens;
+using GUI = KSPe.UI.GUI;
 
 namespace ToolbarControl_NS
 {
