@@ -21,7 +21,7 @@ namespace ToolbarControl_NS
 	{
 		private const string MODNAME = "Toolbar Controller";
 		private const string FOLDERNAME = "001_ToolbarControl";
-		private const string EXPECTEDPATH = FOLDERNAME + "/Plugins";
+		private const string EXPECTEDPATH = FOLDERNAME;// + "/Plugins";
 
 		protected void Start()
 		{
