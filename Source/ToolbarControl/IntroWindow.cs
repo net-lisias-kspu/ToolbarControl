@@ -133,7 +133,7 @@ namespace ToolbarControl_NS
 			{
 				string s = line.Substring(7, line.Length - 8);
 				Log.Debug("Process line, image: " + s);
-				if (ToolbarControl.LoadImageFromFile(out Texture2D image, KSPUtil.ApplicationRootPath + "GameData/" + s))
+				if (Utils.LoadImageFromFile(out Texture2D image, KSPUtil.ApplicationRootPath + "GameData/" + s))
 				{
 					images.Add(image);
 					lines.Add(line);

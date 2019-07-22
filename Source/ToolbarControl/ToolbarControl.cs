@@ -3,8 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using KSP.UI;
 using KSP.UI.Screens;
-using DDSHeaders;
-
 
 namespace ToolbarControl_NS
 {
@@ -83,7 +81,6 @@ namespace ToolbarControl_NS
 			private set;
 		}
 
-
 		public delegate void TC_ClickHandler();
 
 		/// <summary>
@@ -142,7 +139,6 @@ namespace ToolbarControl_NS
 
 		public void UseButtons(string NameSpace)
 		{
-
 			bool s = registeredMods[NameSpace].modToolbarControl.stockActive;
 			bool b = registeredMods[NameSpace].modToolbarControl.blizzyActive;
 
@@ -263,8 +259,6 @@ namespace ToolbarControl_NS
 			}
 		}
 
-
-
 		public void AddToAllToolbars(TC_ClickHandler onTrue, TC_ClickHandler onFalse, TC_ClickHandler onHover, TC_ClickHandler onHoverOut, TC_ClickHandler onEnable, TC_ClickHandler onDisable,
 			ApplicationLauncher.AppScenes visibleInScenes, string nameSpace, string toolbarId, string largeToolbarIconActive, string largeToolbarIconInactive, string smallToolbarIconActive, string smallToolbarIconInactive, string toolTip = null)
 
@@ -333,7 +327,7 @@ namespace ToolbarControl_NS
 				{
 					lastLarge = large;
 
-					Texture2D tex = GetTexture(lastLarge, false);
+					Texture2D tex = Utils.GetTexture(lastLarge, false);
 					if (tex != null && stockButton != null)
 						stockButton.SetTexture((Texture)tex);
 				}
@@ -577,7 +571,7 @@ namespace ToolbarControl_NS
 					{
 						if (this.lastLarge != "")
 						{
-							Texture tex = (Texture)GetTexture(this.lastLarge, false);
+							Texture tex = (Texture)Utils.GetTexture(this.lastLarge, false);
 							if (tex != null)
 							{
 								this.stockButton.SetTexture(tex);
@@ -585,7 +579,7 @@ namespace ToolbarControl_NS
 						}
 						else
 						{
-							Texture tex = (Texture)GetTexture(this.buttonActive ? this.StockToolbarIconActive : this.StockToolbarIconInactive, false);
+							Texture tex = (Texture)Utils.GetTexture(this.buttonActive ? this.StockToolbarIconActive : this.StockToolbarIconInactive, false);
 							if (tex != null)
 							{
 								this.stockButton.SetTexture(tex);
@@ -594,135 +588,6 @@ namespace ToolbarControl_NS
 					}
 				}
 			}
-		}
-
-		//
-		// The following function was initially copied from @JPLRepo's AmpYear mod, which is covered by the GPL, as is this mod
-		//
-		// This function will attempt to load either a PNG or a JPG from the specified path.
-		// It first checks to see if the actual file is there, if not, it then looks for either a PNG or a JPG
-		//
-		// easier to specify different cases than to change case to lower.	This will fail on MacOS and Linux
-		// if a suffix has mixed case
-		private static string[] imgSuffixes = new string[] { ".png", ".jpg", ".gif", ".PNG", ".JPG", ".GIF", ".dds", ".DDS" };
-		public static Boolean LoadImageFromFile(out Texture2D tex, String fileNamePath)
-		{
-			Boolean blnReturn = false;
-			bool dds = false;
-			tex = new Texture2D(2, 2, TextureFormat.ARGB32, false); // Fallback to return something back when things goes through the tubes.
-			try
-			{
-				string path = fileNamePath;
-				if (!System.IO.File.Exists(fileNamePath))
-				{
-					// Look for the file with an appended suffix.
-					for (int i = 0; i < imgSuffixes.Length; i++)
-
-						if (System.IO.File.Exists(fileNamePath + imgSuffixes[i]))
-						{
-							path = fileNamePath + imgSuffixes[i];
-							dds = imgSuffixes[i] == ".dds" || imgSuffixes[i] == ".DDS";
-							break;
-						}
-				}
-
-				//File Exists check
-				if (System.IO.File.Exists(path))
-				{
-					try
-					{
-						if (dds)
-						{
-							Log.Info("LoadIimageFromFile, dds");
-							byte[] bytes = System.IO.File.ReadAllBytes(path);
-
-
-							System.IO.BinaryReader binaryReader = new System.IO.BinaryReader(new System.IO.MemoryStream(bytes));
-							uint num = binaryReader.ReadUInt32();
-
-							if (num != DDSValues.uintMagic)
-							{
-								UnityEngine.Debug.LogError("DDS: File is not a DDS format file!");
-								return false;
-							}
-							DDSHeader ddSHeader = new DDSHeader(binaryReader);
-
-							TextureFormat tf = TextureFormat.Alpha8;
-							if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT1)
-								tf = TextureFormat.DXT1;
-							if (ddSHeader.ddspf.dwFourCC == DDSValues.uintDXT5)
-								tf = TextureFormat.DXT5;
-							if (tf == TextureFormat.Alpha8)
-								return false;
-
-							tex = LoadTextureDXT(bytes, tf);
-						}
-						else
-						{
-							tex = new Texture2D(16, 16, TextureFormat.ARGB32, false);
-							tex.LoadImage(System.IO.File.ReadAllBytes(path));
-						}
-						blnReturn = true;
-					}
-					catch (Exception ex)
-					{
-						Log.Error("Failed to load the texture: " + path);
-						Log.Error(ex.Message);
-					}
-				}
-				else
-				{
-					Log.Debug("Cannot find texture to load from file:" + fileNamePath);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.Error("Failed to load (are you missing a file):" + fileNamePath);
-				Log.Error(ex.Message);
-			}
-			return blnReturn;
-		}
-		public static Texture2D LoadTextureDXT(byte[] ddsBytes, TextureFormat textureFormat)
-		{
-			if (textureFormat != TextureFormat.DXT1 && textureFormat != TextureFormat.DXT5)
-				throw new Exception("Invalid TextureFormat. Only DXT1 and DXT5 formats are supported by this method.");
-
-			byte ddsSizeCheck = ddsBytes[4];
-			if (ddsSizeCheck != 124)
-				throw new Exception("Invalid DDS DXTn texture. Unable to read");  //this header byte should be 124 for DDS image files
-
-			int height = ddsBytes[13] * 256 + ddsBytes[12];
-			int width = ddsBytes[17] * 256 + ddsBytes[16];
-
-			int DDS_HEADER_SIZE = 128;
-			byte[] dxtBytes = new byte[ddsBytes.Length - DDS_HEADER_SIZE];
-			Buffer.BlockCopy(ddsBytes, DDS_HEADER_SIZE, dxtBytes, 0, ddsBytes.Length - DDS_HEADER_SIZE);
-
-			Texture2D texture = new Texture2D(width, height, textureFormat, false);
-			texture.LoadRawTextureData(dxtBytes);
-			texture.Apply();
-
-			return (texture);
-		}
-
-		private Texture2D GetTexture(string path, bool b)
-		{
-			Log.Debug("GetTexture, path: " + KSPUtil.ApplicationRootPath + "GameData/" + path);
-
-
-			// Since most mods have their button textures in files, try loading from the file first
-			if (LoadImageFromFile(out Texture2D tex, KSPUtil.ApplicationRootPath + "GameData/" + path))
-				return tex;
-
-			if (GameDatabase.Instance.ExistsTexture(path))
-			{
-				tex = GameDatabase.Instance.GetTexture(path, false);
-				return tex;
-			}
-
-
-			Log.Error("Cannot find texture to load:" + path);
-			return null;
 		}
 
 		private void OnGUIAppLauncherReady()
@@ -740,7 +605,7 @@ namespace ToolbarControl_NS
 					doOnEnable,
 					doOnDisable,
 					visibleInScenes,
-					(Texture)GetTexture(StockToolbarIconActive, false));
+					(Texture)Utils.GetTexture(StockToolbarIconActive, false));
 
 				if (onLeftClick != null)
 					stockButton.onLeftClick = (Callback)Delegate.Combine(stockButton.onLeftClick, onLeftClick); //combine delegates together
@@ -787,8 +652,6 @@ namespace ToolbarControl_NS
 		private void doOnHoverOut() { drawTooltip = false; if (this.onHoverOut != null) onHoverOut(); }
 		private void doOnEnable() { if (this.onEnable != null) onEnable(); }
 		private void doOnDisable() { if (this.onDisable != null) onDisable(); }
-
-
 
 		private void button_Click(ClickEvent e)
 		{
@@ -945,7 +808,6 @@ namespace ToolbarControl_NS
 			}
 			return false;
 		}
-
 
 		/// <summary>
 		/// Checks whether the given stock button was created by this mod.
