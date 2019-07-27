@@ -55,9 +55,16 @@ namespace ToolbarControl_NS
 			logger.error(msg);
 		}
 
+		[ConditionalAttribute("DEBUG")]
 		public static void Debug(String msg)
 		{
 			logger.trace(msg);
+		}
+
+		[ConditionalAttribute("DEBUG")]
+		public static void Debug(String formatstr, params object[] parms)
+		{
+			logger.trace(formatstr, parms);
 		}
 
 		public static void Force(String msg)

@@ -39,7 +39,6 @@ namespace ToolbarControl_NS
 
 		private void AddToolbarButton()
 		{
-
 			toolbarControl = gameObject.AddComponent<ToolbarControl>();
 			toolbarControl.AddToAllToolbars(ToggleGUI, ToggleGUI,
 				ApplicationLauncher.AppScenes.SPACECENTER | ApplicationLauncher.AppScenes.FLIGHT |

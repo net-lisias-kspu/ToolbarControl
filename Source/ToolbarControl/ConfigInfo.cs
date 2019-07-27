@@ -37,8 +37,14 @@ namespace ToolbarControl_NS
 				debugMode = bool.Parse(node.GetValue("debugMode"));
 			if (debugMode)	Log.Force("Debug is activated");
 
-			if (node.HasValue("logLevel"))
-				Log.Level = (Log.LEVEL)int.Parse(node.GetValue("logLevel"));
+			Log.Level =  (node.HasValue("logLevel")) 
+				? (Log.LEVEL)int.Parse(node.GetValue("logLevel"))
+#if DEBUG
+				: Log.LEVEL.DETAIL
+#else
+				: Log.LEVEL.Info
+#endif
+				;
 		}
 	}
 }

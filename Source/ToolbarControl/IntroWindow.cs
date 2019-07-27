@@ -119,7 +119,7 @@ namespace ToolbarControl_NS
 			// on what didn't work
 			catch (Exception e)
 			{
-				Log.Error("Load error: " + e.Message);
+				Log.Exception(e);
 				return false;
 			}
 		}

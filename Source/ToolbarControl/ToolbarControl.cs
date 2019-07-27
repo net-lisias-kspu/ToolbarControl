@@ -219,6 +219,7 @@ namespace ToolbarControl_NS
 			AddToAllToolbars(onTrue, onFalse, null, null, null, null,
 				visibleInScenes, nameSpace, toolbarId, largeToolbarIconActive, largeToolbarIconInactive, smallToolbarIconActive, smallToolbarIconInactive, toolTip);
 		}
+		
 		/// <summary>
 		/// Pass in all the callbacks
 		/// </summary>
@@ -264,14 +265,9 @@ namespace ToolbarControl_NS
 			ApplicationLauncher.AppScenes visibleInScenes, string nameSpace, string toolbarId, string largeToolbarIconActive, string largeToolbarIconInactive, string smallToolbarIconActive, string smallToolbarIconInactive, string toolTip = null)
 
 		{
-			Log.Debug("AddToAlltoolbars main, nameSpace: " + nameSpace + ",	 toolbarId: " + toolbarId +
-				",	largeToolbarIconActive: " + largeToolbarIconActive + ", largeToolbarIconInactive: " + largeToolbarIconInactive +
-				", smallToolbarIconActive: " + smallToolbarIconActive + ", smallToolbarIconInactive: " + smallToolbarIconInactive
+			Log.Debug("AddToAlltoolbars main, nameSpace: {0},	 toolbarId: {1},	largeToolbarIconActive: {2}, largeToolbarIconInactive: {3}, smallToolbarIconActive: {4},	smallToolbarIconInactive: {5},	tooltip: {6}"
+					, nameSpace, toolbarId, largeToolbarIconActive, largeToolbarIconInactive, smallToolbarIconActive, smallToolbarIconInactive, toolTip
 				);
-			if (toolTip == null)
-				Log.Debug("toolTip is null");
-			else
-				Log.Debug("toolTip: " + toolTip);
 
 			this.onTrue = onTrue;
 			this.onFalse = onFalse;
@@ -292,7 +288,7 @@ namespace ToolbarControl_NS
 				if (HighLogic.CurrentGame.Parameters.CustomParams<TC>().showStockTooltips)
 					this.ToolTip = toolTip;
 			}
-			catch { }
+			catch (System.Exception e) { Log.Exception(e); }
 
 			StartAfterInit();
 			if (registeredMods.ContainsKey(nameSpace))
@@ -301,7 +297,7 @@ namespace ToolbarControl_NS
 				UseButtons(nameSpace);
 			}
 			else
-				Log.Debug("Missing namespace: " + nameSpace);
+				Log.Debug("Missing namespace: {0}", nameSpace);
 		}
 
 		private string lastLarge = "";

@@ -90,7 +90,7 @@ namespace ToolbarControl_NS
 							if (displayName == "")
 								displayName = modName;
 						}
-						catch { }
+						catch (System.Exception e) { Log.Exception(e); }
 						bool useBlizzy = ToBool(node.GetValue("useBlizzy"));
 						bool useStock = true;
 						if (node.HasValue("useStock"))
@@ -142,7 +142,11 @@ namespace ToolbarControl_NS
 					SaveData();
 
 				}
-				catch { return false; }
+				catch (System.Exception e)
+				{
+					Log.Exception(e);
+					return false;
+				}
 			if (mod != null)
 			{
 				sortedModList.Add(mod);
