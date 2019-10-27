@@ -268,6 +268,7 @@ namespace ToolbarControl_NS
 			Log.Trace("AddToAlltoolbars main, nameSpace: {0},	 toolbarId: {1},	largeToolbarIconActive: {2}, largeToolbarIconInactive: {3}, smallToolbarIconActive: {4},	smallToolbarIconInactive: {5},	tooltip: {6}"
 					, nameSpace, toolbarId, largeToolbarIconActive, largeToolbarIconInactive, smallToolbarIconActive, smallToolbarIconInactive, toolTip
 				);
+			Log.Trace("toolTip: {0}",  toolTip ?? "null");
 
 			this.onTrue = onTrue;
 			this.onFalse = onFalse;
@@ -288,7 +289,7 @@ namespace ToolbarControl_NS
 				if (HighLogic.CurrentGame.Parameters.CustomParams<TC>().showStockTooltips)
 					this.ToolTip = toolTip;
 			}
-			catch (System.Exception e) { Log.Exception(e); }
+			catch (System.Exception e) { Log.Exception(e, "on showStockTooltips", ""); }
 
 			StartAfterInit();
 			if (registeredMods.ContainsKey(nameSpace))
@@ -594,13 +595,32 @@ namespace ToolbarControl_NS
 			// Setup PW Stock Toolbar button
 			if (ApplicationLauncher.Ready && stockButton == null)
 			{
+				//
+				// The following is done because Unity will be calling
+				// all the functions every frame.  This way if none is defined,
+				// then null is passed and Unity won't do the call
+				//
+				Callback tcOnTrue = null;
+				if (this.onTrue!= null) tcOnTrue = doOnTrue;
+				Callback tcOnFalse = null;
+				if (this.onFalse != null) tcOnFalse = doOnFalse;
+				Callback tcOnHover = null;
+				if (this.onHover != null) tcOnHover = doOnHover;
+				Callback tcOnHoverOut = null;
+				if (this.onHoverOut != null) tcOnHoverOut = doOnHoverOut;
+				Callback tcOnEnable = null;
+				if (this.onEnable != null) tcOnEnable = doOnEnable;
+				Callback tcOnDisable = null;
+				if (this.onDisable != null) tcOnDisable = doOnDisable;
+
+
 				stockButton = ApplicationLauncher.Instance.AddModApplication(
-					doOnTrue,
-					doOnFalse,
-					doOnHover,
-					doOnHoverOut,
-					doOnEnable,
-					doOnDisable,
+					tcOnTrue,
+					tcOnFalse,
+					tcOnHover,
+					tcOnHoverOut,
+					tcOnEnable,
+					tcOnDisable,
 					visibleInScenes,
 					(Texture)Utils.GetTexture(StockToolbarIconActive, false));
 

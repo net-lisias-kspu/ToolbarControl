@@ -26,10 +26,8 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 using System;
-using System.IO;
 
 using UnityEngine;
-using DDSHeaders;
 
 
 namespace ToolbarControl_NS {
@@ -51,7 +49,7 @@ namespace ToolbarControl_NS {
 			catch (KSPe.Util.Image.Error e)
 			{
 				tex = null;
-				Log.Exception(e);
+				Log.Exception(e, "Could not load texture {0}", fileNamePath);
 				return false;
 			}
 		}

@@ -1,3 +1,26 @@
+<<<<<<< HEAD:_attic/ChangeLog.txt
+=======
+ChangeLog
+
+0.1.9.3
+	Updated MiniAVC.dll to 1.4.0.2 to fix a nasty CTD
+	Some optimization work on related to the stock toolbar code, reduces the number of calls
+		Unity makes every frame
+
+0.1.9.2
+	Removed some log spam
+
+0.1.9.1
+	Updated MiniAVC to 1.4.0
+
+0.1.9
+	Updated for 1.8
+	Added Startup class
+
+0.1.8.2
+	Removed all UnBlur references
+
+>>>>>>> 0588387...  Updated MiniAVC.dll to 1.4.0.2 to fix a nasty CTD:ChangeLog.txt
 0.1.8.1
 	Updated to add large icon to the toolbar.BigTexturePath (new in toolbar 1.7.20)
 	Added InstallChecker

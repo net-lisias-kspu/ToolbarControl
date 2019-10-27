@@ -90,7 +90,7 @@ namespace ToolbarControl_NS
 							if (displayName == "")
 								displayName = modName;
 						}
-						catch (System.Exception e) { Log.Exception(e); }
+						catch (System.Exception e) { Log.Exception(e, "Error reading value [displayName] from {0}", node.name); }
 						bool useBlizzy = ToBool(node.GetValue("useBlizzy"));
 						bool useStock = true;
 						if (node.HasValue("useStock"))
@@ -144,7 +144,7 @@ namespace ToolbarControl_NS
 				}
 				catch (System.Exception e)
 				{
-					Log.Exception(e);
+					Log.Exception(e, "Error registering {0}", DisplayName);
 					return false;
 				}
 			if (mod != null)

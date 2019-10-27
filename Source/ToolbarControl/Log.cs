@@ -81,9 +81,14 @@ namespace ToolbarControl_NS
 			logger.force(formatstr, parms);
 		}
 
-		public static void Exception(Exception e)
+		public static void Exception(Object offended, Exception e)
 		{
-			logger.error(e, "");
+			logger.error(offended, e);
+		}
+
+		public static void Exception(Exception e, string fmt, params object[] parms)
+		{
+			logger.error(e, fmt, parms);
 		}
 
 	}

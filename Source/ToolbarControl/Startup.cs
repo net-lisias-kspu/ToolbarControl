@@ -15,7 +15,7 @@ namespace ToolbarControl_NS
             }
             catch (KSPe.Util.InstallmentException e)
             {
-                Log.Exception(e);
+                Log.Exception(this, e);
 				KSPe.Common.Dialogs.ShowStopperAlertBox.Show(e);
 			}
         }

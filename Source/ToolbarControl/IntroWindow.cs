@@ -116,11 +116,9 @@ namespace ToolbarControl_NS
 				}
 
 			}
-			// If anything broke in the try block, we throw an exception with information
-			// on what didn't work
 			catch (Exception e)
 			{
-				Log.Exception(e);
+				Log.Exception(this, e);
 				return false;
 			}
 		}
