@@ -49,6 +49,11 @@ namespace ToolbarControl_NS
 			logger.warn(msg);
 		}
 
+		public static void Warning(String formatstr, params object[] parms)
+		{
+			logger.warn(formatstr, parms);
+		}
+
 		public static void Error(String msg)
 		{
 			logger.error(msg);
@@ -69,6 +74,12 @@ namespace ToolbarControl_NS
 		public static void Debug(String formatstr, params object[] parms)
 		{
 			logger.trace(formatstr, parms);
+		}
+
+		[ConditionalAttribute("DEBUG")]
+		public static void ExceptionDebug(Object offended, Exception e)
+		{
+			logger.error(offended, e);
 		}
 
 		public static void Force(String msg)

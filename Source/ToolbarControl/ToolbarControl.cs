@@ -289,7 +289,10 @@ namespace ToolbarControl_NS
 				if (HighLogic.CurrentGame.Parameters.CustomParams<TC>().showStockTooltips)
 					this.ToolTip = toolTip;
 			}
-			catch (System.Exception e) { Log.Exception(e, "on showStockTooltips", ""); }
+			catch (System.Exception e) {
+				Log.Warning("Got Exception [{0}] on showStockTooltips.", e.Message);
+				Log.ExceptionDebug(this, e);
+			}
 
 			StartAfterInit();
 			if (registeredMods.ContainsKey(nameSpace))
