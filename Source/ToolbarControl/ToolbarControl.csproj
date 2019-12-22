@@ -33,7 +33,6 @@
   <ItemGroup>
     <Compile Include="BlizzyOptions.cs" />
     <Compile Include="ConfigInfo.cs" />
-    <Compile Include="InstallChecker.cs" />
     <Compile Include="IntroWindow.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -46,6 +45,7 @@
       <DependentUpon>Version.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sheet-38.png" />

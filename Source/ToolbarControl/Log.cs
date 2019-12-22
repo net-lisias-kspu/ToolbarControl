@@ -76,6 +76,11 @@ namespace ToolbarControl_NS
 			logger.force(msg);
 		}
 
+		public static void Force(String formatstr, params object[] parms)
+		{
+			logger.force(formatstr, parms);
+		}
+
 		public static void Exception(Exception e)
 		{
 			logger.error(e, "");
