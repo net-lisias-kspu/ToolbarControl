@@ -46,7 +46,7 @@ namespace ToolbarControl_NS
 #if DEBUG
 				: Log.LEVEL.DETAIL
 #else
-				: Log.LEVEL.Info
+				: Log.LEVEL.INFO
 #endif
 				;
 		}
