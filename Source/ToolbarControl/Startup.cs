@@ -11,7 +11,7 @@ namespace ToolbarControl_NS
 
             try
             {
-                KSPe.Util.Installation.Check<Startup>("001_ToolbarControl");
+                KSPe.Util.Installation.Check<Startup>("ToolbarControl", "001_ToolbarControl", null);
             }
             catch (KSPe.Util.InstallmentException e)
             {
