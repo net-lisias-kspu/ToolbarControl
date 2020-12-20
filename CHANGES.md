@@ -1,5 +1,8 @@
 # Toolbar Controller :: Changes
 
+* 2020-1221: 0.1.9.6 (lisias) for KSP >= 1.4.1
+	+ Update needed by a KSPe API change.
+	+ Adding some convenience methods KSPe style.
 * 2019-1222: 0.1.9.5 (lisias) for KSP >= 1.4.1
 	+ Catching up to upstream
 	+ Better overall log messages
