@@ -242,6 +242,93 @@ namespace ToolbarControl_NS
 				visibleInScenes, nameSpace, toolbarId, largeToolbarIcon, largeToolbarIcon, smallToolbarIcon, smallToolbarIcon, toolTip);
 		}
 
+		public void AddToAllToolbars<T>(TC_ClickHandler onTrue, TC_ClickHandler onFalse,
+			ApplicationLauncher.AppScenes visibleInScenes,
+			string largeToolbarIcon,
+			string smallToolbarIcon,
+			string toolTip = null
+		) {
+			this.AddToAllToolbars(
+				onTrue, onFalse
+				, null, null, null, null
+				, visibleInScenes
+				, typeof(T).Namespace, typeof(T).Namespace + "_Button"
+				, null == largeToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIcon)
+				, null == largeToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIcon)
+				, null == smallToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIcon)
+				, null == smallToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIcon)
+				, toolTip
+			);
+		}
+
+		public void AddToAllToolbars<T>(
+			TC_ClickHandler onTrue, TC_ClickHandler onFalse,
+			ApplicationLauncher.AppScenes visibleInScenes,
+			string largeToolbarIconActive,
+			string largeToolbarIconInactive,
+			string smallToolbarIconActive,
+			string smallToolbarIconInactive,
+			string toolTip = null
+		) {
+			this.AddToAllToolbars(
+				onTrue, onFalse
+				, null, null, null, null
+				, visibleInScenes
+				, typeof(T).Namespace, typeof(T).Namespace + "_Button"
+				, null == largeToolbarIconActive ? null :  KSPe.IO.File<T>.Asset.Solve(largeToolbarIconActive)
+				, null == largeToolbarIconInactive ? null :  KSPe.IO.File<T>.Asset.Solve(largeToolbarIconInactive)
+				, null == smallToolbarIconActive ? null :  KSPe.IO.File<T>.Asset.Solve(smallToolbarIconActive)
+				, null == smallToolbarIconInactive ? null :  KSPe.IO.File<T>.Asset.Solve(smallToolbarIconInactive)
+				, toolTip
+			);
+		}
+
+		public void AddToAllToolbars<T>(
+			TC_ClickHandler onTrue, TC_ClickHandler onFalse
+			, TC_ClickHandler onHover, TC_ClickHandler onHoverOut
+			, TC_ClickHandler onEnable, TC_ClickHandler onDisable
+			, ApplicationLauncher.AppScenes visibleInScenes
+			, string largeToolbarIcon, string smallToolbarIcon
+			, string toolTip = null
+		) {
+			AddToAllToolbars(
+				onTrue, onFalse, onHover, onHoverOut, onEnable, onDisable
+				, visibleInScenes
+				, typeof(T).Namespace, typeof(T).Namespace + "_Button"
+				, null == largeToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIcon)
+				, null == largeToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIcon)
+				, null == smallToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIcon)
+				, null == smallToolbarIcon ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIcon)
+				, toolTip
+			);
+		}
+
+		public void AddToAllToolbars<T>(
+			TC_ClickHandler onTrue, TC_ClickHandler onFalse
+			, TC_ClickHandler onHover, TC_ClickHandler onHoverOut
+			, TC_ClickHandler onEnable, TC_ClickHandler onDisable
+			, ApplicationLauncher.AppScenes visibleInScenes
+			, string largeToolbarIconActive
+			, string largeToolbarIconInactive
+			, string smallToolbarIconActive
+			, string smallToolbarIconInactive
+			, string toolTip = null
+		) {
+			this.AddToAllToolbars(
+				onTrue, onFalse
+				, onHover, onHoverOut
+				, onEnable, onDisable
+				, visibleInScenes
+				, typeof(T).Namespace, typeof(T).Namespace + "_Button"
+				, null == largeToolbarIconActive ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIconActive)
+				, null == largeToolbarIconInactive ? null : KSPe.IO.File<T>.Asset.Solve(largeToolbarIconInactive)
+				, null == smallToolbarIconActive ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIconActive)
+				, null == smallToolbarIconInactive ? null : KSPe.IO.File<T>.Asset.Solve(smallToolbarIconInactive)
+				, toolTip
+			);
+		}
+		
+
 		/// <summary>
 		/// AddLeftRightClickCallbacks
 		/// </summary>
